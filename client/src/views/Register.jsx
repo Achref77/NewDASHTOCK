@@ -84,7 +84,7 @@ function RegisterPage(props) {
               type="password"
             />
           </FormGroup>
-          {/* <Link to="./login"> */}
+
           <Button
             className="submitForm"
             block
@@ -95,7 +95,6 @@ function RegisterPage(props) {
           >
             S'inscrire
           </Button>
-          {/* </Link> */}
         </div>
       </form>
     </div>

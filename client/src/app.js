@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import { BrowserRouter, Route, Switch, Redirect, Link } from "react-router-dom";
@@ -9,42 +9,28 @@ import Registeruser from "./views/Register";
 import AdminLayout from "./layouts/Admin";
 import { loadUser } from "js/actions/auth";
 
-// const dispatch = useDispatch();
+const App = () => {
+  const isAuth = useSelector(state => state.auth.isAuth);
+  const loading = useSelector(state => state.auth.loading);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadUser(localStorage.getItem("token")));
+  }, []);
 
-export default class Register extends React.Component {
-  // state = {
-  //   toDashboard: false,
-  //   loading: true
-  // };
+  return loading ? (
+    "loding...."
+  ) : (
+    <BrowserRouter>
+      <Switch>
+        {isAuth && <Redirect to="/admin" />}
+        <Route path="/login" component={FormPage} />
+        {/* <Redirect from="/" to="/login" /> */}
+        <Route path="/register" component={Registeruser} />
+        <Route path="/admin" render={props => <AdminLayout {...props} />} />
+        <Redirect to="/login" />
+      </Switch>
+    </BrowserRouter>
+  );
+};
 
-  // componentDidMount() {
-  //   if (localStorage.getItem("token")) {
-  //     dispatch(loadUser(localStorage.getItem("token")))
-  //       .then(data => this.setState({ toDashboard: true, loading: false }))
-  //       .catch(err => this.setState({ toDashboard: false, loading: false }));
-  //   } else {
-  //     this.setState({ toDashboard: false, loading: false });
-  //   }
-  // }
-
-  render() {
-    // if (this.state.loading) {
-    //   return;
-    // }
-    // if (this.state.toDashboard === true) {
-    //   return <Redirect to="/login" />;
-    // }
-
-    return (
-      <BrowserRouter>
-        <Switch>
-          <Route path="/login" component={FormPage} />
-          {/* <Redirect from="/" to="/login" /> */}
-          <Route path="/register" component={Registeruser} />
-          <Route path="/admin" render={props => <AdminLayout {...props} />} />
-          <Redirect to="/login" />
-        </Switch>
-      </BrowserRouter>
-    );
-  }
-}
+export default App;
