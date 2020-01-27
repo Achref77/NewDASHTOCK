@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import FormPage from "./views/FormPage";
 import Registeruser from "./views/Register";
 import AdminLayout from "./layouts/Admin";
+import { Spinner } from "reactstrap";
 import { loadUser } from "js/actions/auth";
 
 const App = () => {
@@ -18,7 +19,7 @@ const App = () => {
   }, []);
 
   return loading ? (
-    "loding...."
+    <Spinner color="primary" />
   ) : (
     <BrowserRouter>
       <Switch>

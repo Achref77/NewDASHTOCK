@@ -1,6 +1,5 @@
 import Dashboard from "views/Dashboard.jsx";
 import TableList from "views/ListeUser.jsx";
-import FormPage from "views/FormPage.jsx";
 import PRODUITS from "views/PRODUITS.jsx";
 import CLIENTS from "views/CLIENTS.jsx";
 import FORNUSSEURS from "views/FORNUSSEURS.jsx";
@@ -9,21 +8,21 @@ const dashboardRoutes = [
   {
     path: "/dashboard",
     name: "Dashboard",
-    icon: "pe-7s-graph",
+    icon: "fa fa-pie-chart",
     component: Dashboard,
     layout: "/admin"
   },
   {
     path: "/table",
     name: "ListeUser",
-    icon: "pe-7s-users",
+    icon: "fa fa-id-card",
     component: TableList,
     layout: "/admin"
   },
   {
     path: "/FormPage",
     name: "STOCK",
-    icon: "pe-7s-server",
+    icon: "fa fa-stack-exchange",
     component: TableList,
     layout: "/admin"
   },

@@ -50,8 +50,8 @@ export const register = ({
   console.log(res);
   try {
     dispatch({
-      type: REGISTER_SUCCESS,
-      payload: res.data
+      type: REGISTER_SUCCESS
+      // payload: res.data
     });
 
     return <Redirect to="/login" />;

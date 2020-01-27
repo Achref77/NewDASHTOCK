@@ -36,12 +36,6 @@ function RegisterPage(props) {
     dispatch(register(newUser))
       .then(data => props.history.push("/login"))
       .catch(err => console.log(err));
-    // console.log(props.history);
-    // props.history.push("/admin");
-    // axios
-    //   .post("/api/users", newUser)
-    //   .then(res => console.log(res.data))
-    //   .catch(err => console.log(err.response.data));
   }
 
   return (

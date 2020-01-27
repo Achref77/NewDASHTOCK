@@ -118,7 +118,6 @@ class Admin extends Component {
           />
         </div>
       </div>
-      // <h1>hello from admin</h1>
     );
   }
 }

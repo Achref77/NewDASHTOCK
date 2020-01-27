@@ -32,6 +32,11 @@ const auth = (state = initialState, action) => {
         user: payload
       };
     case REGISTER_SUCCESS:
+      return {
+        ...state,
+        isAuth: false,
+        loading: false
+      };
     case LOGIN_SUCCESS:
       localStorage.setItem("token", payload.token);
       return {
