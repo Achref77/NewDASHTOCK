@@ -1,2 +1,2 @@
-import store from "./store/index";
-window.store = store;
+// import store from "./store/index";
+// window.store = store;

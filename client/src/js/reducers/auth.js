@@ -11,8 +11,8 @@ import {
 
 const initialState = {
   token: localStorage.getItem("token"),
-  isAuth: null,
-  loading: true,
+  isAuth: false,
+  loading: false,
   user: {
     name: "",
     email: "",
@@ -37,6 +37,8 @@ const auth = (state = initialState, action) => {
         isAuth: false,
         loading: false
       };
+    case REGISTER_SUCCESS:
+    case LOAD_SUCCESS:
     case LOGIN_SUCCESS:
       localStorage.setItem("token", payload.token);
       return {
@@ -60,34 +62,6 @@ const auth = (state = initialState, action) => {
     // default:
     //   return state;
 
-    case REGISTER_SUCCESS:
-      return {
-        ...state,
-        data: payload,
-        isAuth: true,
-        loading: false
-      };
-    case LOGIN_SUCCESS:
-      return {
-        ...state,
-        data: payload,
-        isAuth: true,
-        loading: false
-      };
-    case LOGIN_FAIL:
-      return {
-        ...state,
-        data: payload,
-        isAuth: false,
-        loading: false
-      };
-    case LOAD_SUCCESS:
-      return {
-        ...state,
-        data: payload,
-        isAuth: true,
-        loading: false
-      };
     default:
       return state;
   }

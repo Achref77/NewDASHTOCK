@@ -1,5 +1,5 @@
 import Dashboard from "views/Dashboard.jsx";
-import TableList from "views/ListeUser.jsx";
+import TableList from "views/ListContacts.js";
 import PRODUITS from "views/PRODUITS.jsx";
 import CLIENTS from "views/CLIENTS.jsx";
 import FORNUSSEURS from "views/FORNUSSEURS.jsx";
@@ -14,7 +14,7 @@ const dashboardRoutes = [
   },
   {
     path: "/table",
-    name: "ListeUser",
+    name: "ListContacts",
     icon: "fa fa-id-card",
     component: TableList,
     layout: "/admin"

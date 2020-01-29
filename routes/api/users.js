@@ -70,7 +70,7 @@ router.post(
     }
   }
 );
-router.get("/login", auth, (req, res) => {
+router.get("/login", (req, res) => {
   console.log(req.user);
   res.json(req.user);
 });

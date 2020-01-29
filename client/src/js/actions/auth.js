@@ -1,7 +1,4 @@
-import React from "react";
 import axios from "axios";
-import setAuthToken from "../../setAuthToken.js";
-import { Redirect } from "react-router-dom";
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -13,8 +10,8 @@ import {
 
 //USER LOADER
 export const loadUser = token => async dispatch => {
-  console.log(token);
-  if (token) setAuthToken(localStorage.token);
+  // console.log(token);
+  // if (token) setAuthToken(localStorage.token);
   const config = {
     headers: {
       Authorization: token
@@ -27,7 +24,7 @@ export const loadUser = token => async dispatch => {
       payload: res.data
     });
   } catch (error) {
-    console.error(error.msg);
+    console.error(error);
     dispatch({
       type: LOGIN_FAIL
     });
@@ -54,7 +51,7 @@ export const register = ({
       // payload: res.data
     });
 
-    return <Redirect to="/login" />;
+    // return <Redirect to="/login" />;
   } catch (err) {
     // console.error('this error from auth.js', err.message);
     const errors = err.response.data.errors;
@@ -75,15 +72,15 @@ export const loginUser = ({ email, password }) => async dispatch => {
     }
   };
   const body = JSON.stringify({ email, password });
-  const res = await axios.post("api/auth/login", body, config);
-  console.log("body", res);
-
   try {
+    const res = await axios.post("api/auth/login", body, config);
+    console.log("body", res);
+
+    // loadUser(res.data.token);
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data
     });
-    dispatch(loadUser(res.data.token));
   } catch (err) {
     console.error("this error from auth.js", err.message);
   }

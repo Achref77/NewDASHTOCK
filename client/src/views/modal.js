@@ -1,11 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 class ModalExample extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      redirect: false
     };
     this.toggle = this.toggle.bind(this);
   }
@@ -40,46 +41,48 @@ class ModalExample extends React.Component {
         >
           <ModalHeader toggle={this.toggle}>Add new movie</ModalHeader>
           <ModalBody>
-            <input
-              class="ground"
-              id="imgfilm"
-              type="text"
-              placeholder="imgfilm..."
-              name="url"
-              onChange={this.handlechange}
-            />
+            <div className="add-card">
+              <p className="card-title-add">Add Contact</p>
 
-            <input
-              class="ground"
-              id="name"
-              type="text"
-              placeholder="name..."
-              name="name"
-              onChange={this.handlechange}
-            />
+              <input
+                name="name"
+                type="text"
+                placeholder="Name..."
+                onChange={this.props.handleChange}
+                value={this.props.contact.name}
+              />
 
-            <input
-              class="ground"
-              id="boton"
-              type="text"
-              placeholder="youtube..."
-              name="youtube"
-              onChange={this.handlechange}
-            />
+              <input
+                name="phone"
+                type="text"
+                placeholder="Phone..."
+                onChange={this.props.handleChange}
+                value={this.props.contact.phone}
+              />
 
-            <input
-              class="ground"
-              id="rate"
-              type="number"
-              max="5"
-              placeholder="rates..."
-              name="rate"
-              onChange={this.handlechange}
-            />
+              <input
+                name="email"
+                type="text"
+                placeholder="Email..."
+                onChange={this.props.handleChange}
+                value={this.props.contact.email}
+              />
+
+              {/* <input
+                type="button"
+                value="add contact"
+                className="add-button"
+                onClick={this.props.action}
+              /> */}
+            </div>
           </ModalBody>
           <ModalFooter>
             {/* <Button color="primary" className="add-btn" onClick={() => this.props.add(this.state.addlist)} >validate</Button>{' '} */}
-            <Button color="primary" className="add-btn">
+            <Button
+              color="primary"
+              className="add-btn"
+              onClick={this.props.action}
+            >
               validate
             </Button>{" "}
             <Button color="secondary" className="add-btn" onClick={this.toggle}>
