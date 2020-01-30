@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-
 class ModalExample extends React.Component {
   constructor(props) {
     super(props);
@@ -15,13 +14,11 @@ class ModalExample extends React.Component {
       modal: !prevState.modal
     }));
   }
-
   handlechange = event => {
     // this.setState({ [event.target.name]: event.target.value });
     // console.log(event.target.value)
     // console.log(event.target.name);
   };
-
   render() {
     return (
       <div className="modal-container">
@@ -39,11 +36,11 @@ class ModalExample extends React.Component {
           toggle={this.toggle}
           className={this.props.className}
         >
-          <ModalHeader toggle={this.toggle}>Add new movie</ModalHeader>
+          <ModalHeader toggle={this.toggle}>Ajouter nouveau utilisateur</ModalHeader>
           <ModalBody>
             <div className="add-card">
-              <p className="card-title-add">Add Contact</p>
-
+              <p className="card-title-add">Ajouter contact</p>
+<p>Nom</p>
               <input
                 name="nom"
                 type="text"
@@ -51,53 +48,43 @@ class ModalExample extends React.Component {
                 onChange={this.props.handleChange}
                 value={this.props.contact.nom}
               />
-
-              <input
+                         
+              <p>Prenom</p>
+<input
                 name="prenom"
                 type="text"
                 placeholder="Prenom..."
                 onChange={this.props.handleChange}
                 value={this.props.contact.prenom}
               />
-
+          
+<p>Telephone</p>
               <input
                 name="telephone"
                 type="text"
                 placeholder="telephone..."
                 onChange={this.props.handleChange}
-                value={this.props.contact.phone}
+                value={this.props.contact.telephone}
               />
-
-              <input
+<p>Email</p>      <input
                 name="email"
                 type="text"
                 placeholder="Email..."
                 onChange={this.props.handleChange}
                 value={this.props.contact.email}
               />
-
-              <input
-                name="role"
-                type="text"
-                placeholder="Role..."
-                onChange={this.props.handleChange}
-                value={this.props.contact.role}
-              />
-
-              <select name="cars">
-                <option value="magazinier">Magazinier</option>
-                <option value="">GERANT</option>
-                onChange={this.props.handleChange}
-                value={this.props.contact.role}
-              </select>
-              <input type="submit" />
-
-              {/* <input
-                type="button"
-                value="add contact"
-                className="add-button"
-                onClick={this.props.action}
-              /> */}
+                      
+<p>Role</p>
+<select name="role"
+  onChange={this.props.handleChange}
+  value={this.props.contact.role}
+>
+<option value="choisir un role">------</option>
+    <option value="magazinier">Magazinier</option>
+    <option value="">GERANT</option>
+    
+    <input type="submit"/>
+  </select>
             </div>
           </ModalBody>
           <ModalFooter>
@@ -107,7 +94,7 @@ class ModalExample extends React.Component {
               className="add-btn"
               onClick={this.props.action}
             >
-              validate
+              valider
             </Button>{" "}
             <Button color="secondary" className="add-btn" onClick={this.toggle}>
               Cancel

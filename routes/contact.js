@@ -18,21 +18,23 @@ router.delete("/:id", (req, res) => {
 });
 // update
 router.put("/:id", (req, res) => {
-  const { name, phone, email } = req.body;
+  const { nom,prenom, telephone, email, role } = req.body;
   Contact.findOneAndUpdate(
     { _id: req.params },
-    { $set: { name, phone, email } }
+    { $set: { nom, telephone, email, prenom, role } }
   )
     .then(contacts => res.send(contacts))
     .catch(err => console.log(err));
 });
 // add
 router.post("/", (req, res) => {
-  const { name, phone, email } = req.body;
+  const { nom, telephone, email, prenom, role } = req.body;
   const newcontact = new Contact({
-    name,
-    phone,
-    email
+    nom,
+    prenom,
+    telephone,
+    email,
+    role
   });
   newcontact
     .save()
