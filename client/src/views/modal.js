@@ -52,7 +52,7 @@ class ModalExample extends React.Component {
                 value={this.props.contact.nom}
               />
 
-<input
+              <input
                 name="prenom"
                 type="text"
                 placeholder="Prenom..."
@@ -76,7 +76,7 @@ class ModalExample extends React.Component {
                 value={this.props.contact.email}
               />
 
-<input
+              <input
                 name="role"
                 type="text"
                 placeholder="Role..."
@@ -84,24 +84,13 @@ class ModalExample extends React.Component {
                 value={this.props.contact.role}
               />
 
-
-  <select name="cars">
-    <option value="magazinier">Magazinier</option>
-    <option value="">GERANT</option>
-    onChange={this.props.handleChange}
-    value={this.props.contact.role}
-
-  </select>
-  <input type="submit">
-
-
-
-
-
-
-
-
-
+              <select name="cars">
+                <option value="magazinier">Magazinier</option>
+                <option value="">GERANT</option>
+                onChange={this.props.handleChange}
+                value={this.props.contact.role}
+              </select>
+              <input type="submit" />
 
               {/* <input
                 type="button"
