@@ -9,7 +9,6 @@
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
@@ -30,5 +29,6 @@
   "devDependencies": {
     "concurrently": "^5.0.2",
     "nodemon": "^2.0.2"
-  }
+  },
+  "repository": "https://github.com/Achref77/NewDASHTOCK.git"
 }

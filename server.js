@@ -1,5 +1,6 @@
-const express = require("express");
-const connectDB = require("./config/db");
+const express = require('express');
+const connectDB = require('./config/db');
+const passport = require('passport');
 
 const app = express();
 
@@ -9,11 +10,10 @@ connectDB();
 //Middleware
 app.use(express.json({ extended: false }));
 
-app.get("/", (req, res) => res.send("API RUNNING"));
+// app.get("/", (req, res) => res.send("API RUNNING"));
 
-app.use("/api/users", require("./routes/api/users"));
-app.use("/api/auth", require("./routes/api/auth"));
-app.use("/contacts", require("./routes/contact"));
+app.use('/users', require('./routes/api/auth'));
+// app.use("/contacts", require("./routes/contact"));
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
