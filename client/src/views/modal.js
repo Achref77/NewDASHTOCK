@@ -45,17 +45,25 @@ class ModalExample extends React.Component {
               <p className="card-title-add">Add Contact</p>
 
               <input
-                name="name"
+                name="nom"
                 type="text"
-                placeholder="Name..."
+                placeholder="Nom..."
                 onChange={this.props.handleChange}
-                value={this.props.contact.name}
+                value={this.props.contact.nom}
+              />
+
+<input
+                name="prenom"
+                type="text"
+                placeholder="Prenom..."
+                onChange={this.props.handleChange}
+                value={this.props.contact.prenom}
               />
 
               <input
-                name="phone"
+                name="telephone"
                 type="text"
-                placeholder="Phone..."
+                placeholder="telephone..."
                 onChange={this.props.handleChange}
                 value={this.props.contact.phone}
               />
@@ -67,6 +75,33 @@ class ModalExample extends React.Component {
                 onChange={this.props.handleChange}
                 value={this.props.contact.email}
               />
+
+<input
+                name="role"
+                type="text"
+                placeholder="Role..."
+                onChange={this.props.handleChange}
+                value={this.props.contact.role}
+              />
+
+
+  <select name="cars">
+    <option value="magazinier">Magazinier</option>
+    <option value="">GERANT</option>
+    onChange={this.props.handleChange}
+    value={this.props.contact.role}
+
+  </select>
+  <input type="submit">
+
+
+
+
+
+
+
+
+
 
               {/* <input
                 type="button"
