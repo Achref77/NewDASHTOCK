@@ -2,8 +2,10 @@ const mongoose = require("mongoose");
 const schema = mongoose.Schema;
 
 const ContactSchema = new schema({
-  name: { type: String },
-  phone: { type: String },
+  nom: { type: String },
+  prenom: { type: String },
+  role: { type: String },
+  telephone: { type: String },
   email: { type: String }
 });
 
