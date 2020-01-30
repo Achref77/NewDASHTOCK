@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-
 class ModalExample extends React.Component {
   constructor(props) {
     super(props);
@@ -15,13 +14,11 @@ class ModalExample extends React.Component {
       modal: !prevState.modal
     }));
   }
-
   handlechange = event => {
     // this.setState({ [event.target.name]: event.target.value });
     // console.log(event.target.value)
     // console.log(event.target.name);
   };
-
   render() {
     return (
       <div className="modal-container">
@@ -43,8 +40,6 @@ class ModalExample extends React.Component {
           <ModalBody>
             <div className="add-card">
               <p className="card-title-add">Ajouter contact</p>
-
-
 <p>Nom</p>
               <input
                 name="nom"
@@ -54,9 +49,7 @@ class ModalExample extends React.Component {
                 value={this.props.contact.nom}
               />
                          
-
               <p>Prenom</p>
-
 <input
                 name="prenom"
                 type="text"
@@ -64,10 +57,8 @@ class ModalExample extends React.Component {
                 onChange={this.props.handleChange}
                 value={this.props.contact.prenom}
               />
-
           
 <p>Telephone</p>
-
               <input
                 name="telephone"
                 type="text"
@@ -75,7 +66,6 @@ class ModalExample extends React.Component {
                 onChange={this.props.handleChange}
                 value={this.props.contact.telephone}
               />
-
 <p>Email</p>      <input
                 name="email"
                 type="text"
@@ -85,21 +75,16 @@ class ModalExample extends React.Component {
               />
                       
 <p>Role</p>
-
 <select name="role"
   onChange={this.props.handleChange}
   value={this.props.contact.role}
 >
 <option value="choisir un role">------</option>
-
     <option value="magazinier">Magazinier</option>
     <option value="">GERANT</option>
     
     <input type="submit"/>
-
   </select>
-
-
             </div>
           </ModalBody>
           <ModalFooter>
