@@ -7,17 +7,17 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   LOAD_SUCCESS
-} from "../constants/action-types";
+} from '../constants/action-types';
 
 const initialState = {
-  token: localStorage.getItem("token"),
+  token: localStorage.getItem('token'),
   isAuth: false,
   loading: false,
   user: {
-    name: "",
-    email: "",
-    password: "",
-    avatar: ""
+    name: '',
+    email: '',
+    password: '',
+    avatar: ''
   }
 };
 const auth = (state = initialState, action) => {
@@ -37,10 +37,8 @@ const auth = (state = initialState, action) => {
         isAuth: false,
         loading: false
       };
-    case REGISTER_SUCCESS:
-    case LOAD_SUCCESS:
     case LOGIN_SUCCESS:
-      localStorage.setItem("token", payload.token);
+      localStorage.setItem('token', payload.token);
       return {
         ...state,
         ...payload,
@@ -51,7 +49,7 @@ const auth = (state = initialState, action) => {
     case AUTH_ERROR:
     case LOGIN_FAIL:
     case LOGOUT:
-      localStorage.removeItem("token");
+      localStorage.removeItem('token');
       return {
         ...state,
         token: null,
