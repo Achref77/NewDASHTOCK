@@ -19,7 +19,6 @@ class App extends Component {
     id: "",
     edit: false
   };
-
   getPerson = contact => {
     this.setState({
       nom: contact.nom,
@@ -31,7 +30,6 @@ class App extends Component {
       edit: true
     });
   };
-
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -50,11 +48,9 @@ class App extends Component {
     this.props.postContact(this.state);
     // this.reset();
   };
-
   componentDidMount = () => {
     this.props.getContacts();
   };
-
   render() {
     return (
       <div className="contact-card">
@@ -100,11 +96,9 @@ class App extends Component {
     );
   }
 }
-
 const MapStateToProps = state => ({
   contacts: state.Reducer.contacts
 });
-
 export default connect(MapStateToProps, {
   getContacts,
   deleteContact,

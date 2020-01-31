@@ -27,7 +27,6 @@ export default function ContactCart({ contact, deleteContact, getPerson }) {
                           onClick={() => getPerson(contact)}
                         ></i>
                       </Link>
-
                       <Link>
                         <i
                           className="fa fa-trash-o"
