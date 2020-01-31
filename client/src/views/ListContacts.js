@@ -9,10 +9,6 @@ import {
 } from "../../src/js/actions/actions";
 import ContactCard from "./contactCard";
 import { Grid, Row, Col, Table } from "react-bootstrap";
-
-import Card from "components/Card/Card.jsx";
-import { thArray, tdArray } from "variables/Variables.jsx";
-
 class App extends Component {
   state = {
     nom: "",
@@ -61,22 +57,27 @@ class App extends Component {
 
   render() {
     return (
-      <div className='contact-list'>
-        <div className='content'>
-          <Table>
-            <thead>
-              <tr>
-                <th> nom </th>
-                <th> Prenom </th>
-                <th> email </th>
-                <th> Telephone </th>
-                <th> role </th>
-                <th> Action </th>
-              </tr>
-            </thead>
-          </Table>
+      <div className="contact-card">
+        <div className="content">
+          <Grid fluid>
+            <Row>
+              <Col md={12}>
+                <Table striped hover>
+                  <thead>
+                    <tr>
+                      <th> nom </th>
+                      <th> Prenom </th>
+                      <th> email </th>
+                      <th> Telephone </th>
+                      <th> role </th>
+                      <th> Action </th>
+                    </tr>
+                  </thead>
+                </Table>
+              </Col>
+            </Row>
+          </Grid>
         </div>
-
         {this.props.contacts.map(el => (
           <ContactCard
             deleteContact={this.props.deleteContact}
@@ -84,12 +85,17 @@ class App extends Component {
             contact={el}
           />
         ))}
-
-        <ModalExample
-          handleChange={this.handleChange}
-          contact={this.state}
-          action={this.addContact}
-        />
+        <Grid fluid>
+          <Row>
+            <Col md={12}>
+              <ModalExample
+                handleChange={this.handleChange}
+                contact={this.state}
+                action={this.addContact}
+              />
+            </Col>
+          </Row>
+        </Grid>
       </div>
     );
   }

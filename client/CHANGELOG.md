@@ -100,4 +100,3 @@
 ### Original Release
 
 - Added React-Bootstrap as base framework
-- Added design from Light Bootstrap Dashboard by Creative Tim
