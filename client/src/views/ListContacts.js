@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import ModalExample from "./modal";
-import EditModal from "./modaledit";
-
 import { connect } from "react-redux";
 import {
   getContacts,
@@ -11,10 +9,6 @@ import {
 } from "../../src/js/actions/actions";
 import ContactCard from "./contactCard";
 import { Grid, Row, Col, Table } from "react-bootstrap";
-
-import Card from "components/Card/Card.jsx";
-import "./list.css"
-
 class App extends Component {
   state = {
     nom: "",
@@ -25,7 +19,6 @@ class App extends Component {
     id: "",
     edit: false
   };
-
   getPerson = contact => {
     this.setState({
       nom: contact.nom,
@@ -37,7 +30,6 @@ class App extends Component {
       edit: true
     });
   };
-
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -56,29 +48,32 @@ class App extends Component {
     this.props.postContact(this.state);
     // this.reset();
   };
-
   componentDidMount = () => {
     this.props.getContacts();
   };
-
   render() {
     return (
-      <div className='contact-list'>
-        <div className='content'>
-          <Table>
-            <thead>
-              <tr>
-                <th > nom </th>
-                <th> Prenom </th>
-                <th> email </th>
-                <th> Telephone </th>
-                <th> role </th>
-                <th> Action </th>
-              </tr>
-            </thead>
-          </Table>
+      <div className="contact-card">
+        <div className="content">
+          <Grid fluid>
+            <Row>
+              <Col md={12}>
+                <Table striped hover>
+                  <thead>
+                    <tr>
+                      <th> nom </th>
+                      <th> Prenom </th>
+                      <th> email </th>
+                      <th> Telephone </th>
+                      <th> role </th>
+                      <th> Action </th>
+                    </tr>
+                  </thead>
+                </Table>
+              </Col>
+            </Row>
+          </Grid>
         </div>
-
         {this.props.contacts.map(el => (
           <ContactCard
             deleteContact={this.props.deleteContact}
@@ -86,25 +81,24 @@ class App extends Component {
             contact={el}
           />
         ))}
-
-
-
-        <ModalExample
-          handleChange={this.handleChange}
-          contact={this.state}
-          action={this.addContact}
-        />
-
-       
+        <Grid fluid>
+          <Row>
+            <Col md={12}>
+              <ModalExample
+                handleChange={this.handleChange}
+                contact={this.state}
+                action={this.addContact}
+              />
+            </Col>
+          </Row>
+        </Grid>
       </div>
     );
   }
 }
-
 const MapStateToProps = state => ({
   contacts: state.Reducer.contacts
 });
-
 export default connect(MapStateToProps, {
   getContacts,
   deleteContact,

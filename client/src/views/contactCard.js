@@ -1,37 +1,47 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Grid, Row, Col, Table } from "react-bootstrap";
-import EditModal from "./modaledit"
-import "./list.css"
+import "./Login.css";
 export default function ContactCart({ contact, deleteContact, getPerson }) {
-  console.log('contact.email', contact.email)
+  console.log("contact.email", contact.email);
   return (
-    <div className='contact-card'>
-      <div className='card-text'>
-        <Table>
-          <tbody  >
-            <tr >
-              <td  > {contact.nom} </td>
-              <td > {contact.prenom} </td>
-              <td  > {contact.email} </td>
-              <td  > {contact.telephone} </td>
-              <td  > {contact.role} </td>
-              <td > {contact.action} </td>
-            
-              <td><EditModal/></td>
-              <td>
-                  <img src={"data:image/jpeg;base64,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"}
-                    type='button'
-                    value='Delete'
-                    className='deletebutton'
-                    onClick={() => deleteContact(contact._id)}
-
-                  />
-                
-              </td>
-            </tr>
-          </tbody>
-        </Table>
+    <div className="contact-card">
+      <div className="content">
+        <Grid fluid>
+          <Row>
+            <Col md={12}>
+              <Table striped hover>
+                <thead>
+                  <tr>
+                    <th> {contact.nom} </th>
+                    <th> {contact.prenom} </th>
+                    <th> {contact.email} </th>
+                    <th> {contact.telephone} </th>
+                    <th> {contact.role} </th>
+                    <th> {contact.action} </th>
+                    <th>
+                      <Link to="/edit-contact">
+                        <i
+                          class="fa fa-pencil-square-o"
+                          aria-hidden="true"
+                          onClick={() => getPerson(contact)}
+                        ></i>
+                      </Link>
+                      <Link>
+                        <i
+                          className="fa fa-trash-o"
+                          aria-hidden="true"
+                          style={{ minWidth: "223px", maxWidth: "180px" }}
+                          onClick={() => deleteContact(contact._id)}
+                        ></i>
+                      </Link>
+                    </th>
+                  </tr>
+                </thead>
+              </Table>
+            </Col>
+          </Row>
+        </Grid>
       </div>
     </div>
   );

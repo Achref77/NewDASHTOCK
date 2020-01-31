@@ -2,7 +2,6 @@ var defaultWidth =
   window.screen.width > 768
     ? (window.screen.width * 1) / 3
     : window.screen.width;
-
 var style = {
   Wrapper: {},
   Containers: {
@@ -23,21 +22,18 @@ var style = {
       fontWeight: "400",
       color: "#FFFFFF"
     },
-
     tl: {
       top: "0px",
       bottom: "auto",
       left: "0px",
       right: "auto"
     },
-
     tr: {
       top: "0px",
       bottom: "auto",
       left: "auto",
       right: "0px"
     },
-
     tc: {
       top: "0px",
       bottom: "auto",
@@ -45,21 +41,18 @@ var style = {
       left: "50%",
       marginLeft: -(defaultWidth / 2)
     },
-
     bl: {
       top: "auto",
       bottom: "0px",
       left: "0px",
       right: "auto"
     },
-
     br: {
       top: "auto",
       bottom: "0px",
       left: "auto",
       right: "0px"
     },
-
     bc: {
       top: "auto",
       bottom: "0px",
@@ -68,7 +61,6 @@ var style = {
       marginLeft: -(defaultWidth / 2)
     }
   },
-
   NotificationItem: {
     DefaultStyle: {
       position: "relative",
@@ -87,49 +79,42 @@ var style = {
       WebkitTransform: "translate3d(0, 0, 0)",
       transform: "translate3d(0, 0, 0)",
       willChange: "transform, opacity",
-
       isHidden: {
         opacity: 0
       },
-
       isVisible: {
         opacity: 1
       }
     },
-
     success: {
       borderTop: 0,
-      backgroundColor: "#a1e82c",
+      backgroundColor: "#A1E82C",
       WebkitBoxShadow: 0,
       MozBoxShadow: 0,
       boxShadow: 0
     },
-
     error: {
       borderTop: 0,
-      backgroundColor: "#fc727a",
+      backgroundColor: "#FC727A",
       WebkitBoxShadow: 0,
       MozBoxShadow: 0,
       boxShadow: 0
     },
-
     warning: {
       borderTop: 0,
-      backgroundColor: "#ffbc67",
+      backgroundColor: "#FFBC67",
       WebkitBoxShadow: 0,
       MozBoxShadow: 0,
       boxShadow: 0
     },
-
     info: {
       borderTop: 0,
-      backgroundColor: "#63d8f1",
+      backgroundColor: "#63D8F1",
       WebkitBoxShadow: 0,
       MozBoxShadow: 0,
       boxShadow: 0
     }
   },
-
   Title: {
     DefaultStyle: {
       fontSize: "30px",
@@ -144,7 +129,6 @@ var style = {
       marginTop: "-15px"
     }
   },
-
   MessageWrapper: {
     DefaultStyle: {
       marginLeft: "55px",
@@ -154,7 +138,6 @@ var style = {
       maxWidthwidth: "89%"
     }
   },
-
   Dismiss: {
     DefaultStyle: {
       fontFamily: "inherit",
@@ -178,59 +161,49 @@ var style = {
       fontWeight: "300",
       marginLeft: "65px"
     },
-
     success: {
-      // color: '#f0f5ea',
-      // backgroundColor: '#a1e82c'
+      // color: '#F0F5EA',
+      // backgroundColor: '#A1E82C'
     },
-
     error: {
-      // color: '#f4e9e9',
-      // backgroundColor: '#fc727a'
+      // color: '#F4E9E9',
+      // backgroundColor: '#FC727A'
     },
-
     warning: {
-      // color: '#f9f6f0',
-      // backgroundColor: '#ffbc67'
+      // color: '#F9F6F0',
+      // backgroundColor: '#FFBC67'
     },
-
     info: {
-      // color: '#e8f0f4',
-      // backgroundColor: '#63d8f1'
+      // color: '#E8F0F4',
+      // backgroundColor: '#63D8F1'
     }
   },
-
   Action: {
     DefaultStyle: {
-      background: "#ffffff",
+      background: "#FFFFFF",
       borderRadius: "2px",
       padding: "6px 20px",
       fontWeight: "bold",
       margin: "10px 0 0 0",
       border: 0
     },
-
     success: {
-      backgroundColor: "#a1e82c",
-      color: "#ffffff"
+      backgroundColor: "#A1E82C",
+      color: "#FFFFFF"
     },
-
     error: {
-      backgroundColor: "#fc727a",
-      color: "#ffffff"
+      backgroundColor: "#FC727A",
+      color: "#FFFFFF"
     },
-
     warning: {
-      backgroundColor: "#ffbc67",
-      color: "#ffffff"
+      backgroundColor: "#FFBC67",
+      color: "#FFFFFF"
     },
-
     info: {
-      backgroundColor: "#63d8f1",
-      color: "#ffffff"
+      backgroundColor: "#63D8F1",
+      color: "#FFFFFF"
     }
   },
-
   ActionWrapper: {
     DefaultStyle: {
       margin: 0,
@@ -238,7 +211,6 @@ var style = {
     }
   }
 };
-
 //
 // //
 // // // For tables
@@ -246,7 +218,6 @@ var style = {
 //
 const thArray = ["Nom", "Prenom", "Email", "Telephone", "Role", "Action"];
 const tdArray = [" dd"];
-
 //
 // //
 // // // For icons
@@ -456,7 +427,6 @@ const iconsArray = [
   "pe-7s-alarm",
   "pe-7s-airplay"
 ];
-
 //
 // //
 // // // // For dashboard's charts
@@ -471,7 +441,6 @@ var legendPie = {
   names: ["Open", "Bounce", "Unsubscribe"],
   types: ["info", "danger", "warning"]
 };
-
 // Data for Line Chart
 var dataSales = {
   labels: [
@@ -522,7 +491,6 @@ var legendSales = {
   names: ["Open", "Click", "Click Second Time"],
   types: ["info", "danger", "warning"]
 };
-
 // Data for Bar Chart
 var dataBar = {
   labels: [
@@ -568,7 +536,6 @@ var legendBar = {
   names: ["Tesla Model S", "BMW 5 Series"],
   types: ["info", "danger"]
 };
-
 module.exports = {
   style, // For notifications (App container and Notifications view)
   thArray,
