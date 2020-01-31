@@ -18,13 +18,7 @@ class EditContact extends React.Component {
 ​
         };
     }
-    // getContact = () => {
-    //     // this.setState ({contact:this.props.contact.find(el=>el._id=this.props.id)})
-    //      axios.get(`/contacts/${this.props.id }`)
-    //      .then((res) =>
-    //      {this.setState({photo: res.data.photo, name: res.data.name, phone: res.data.phone})})
-    // }
-​
+
     toggle = () => {
         this.setState(prevState => ({
             modal: !prevState.modal

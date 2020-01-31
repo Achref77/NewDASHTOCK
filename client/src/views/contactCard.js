@@ -9,7 +9,6 @@ const ContactCard = props => {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
 
-  // console.log("contact.email", contact.email);
   return (
     <div className="contact-card">
       <div className="content">
@@ -54,5 +53,4 @@ const ContactCard = props => {
     </div>
   );
 };
-
 export default ContactCard;
