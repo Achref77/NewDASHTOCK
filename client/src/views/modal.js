@@ -93,8 +93,9 @@ class ModalExample extends React.Component {
 <option value="choisir un role">------</option>
 
     <option value="magazinier">Magazinier</option>
-    <option value="">GERANT</option>
-    
+    <option value="gerant">Gerant</option>
+    <option value="Admin"> Admin </option>
+
     <input type="submit"/>
 
   </select>

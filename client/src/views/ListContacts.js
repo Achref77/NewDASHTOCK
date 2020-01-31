@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import ModalExample from "./modal";
+import EditModal from "./modaledit";
+
 import { connect } from "react-redux";
 import {
   getContacts,
@@ -11,7 +13,7 @@ import ContactCard from "./contactCard";
 import { Grid, Row, Col, Table } from "react-bootstrap";
 
 import Card from "components/Card/Card.jsx";
-import { thArray, tdArray } from "variables/Variables.jsx";
+import "./list.css"
 
 class App extends Component {
   state = {
@@ -66,7 +68,7 @@ class App extends Component {
           <Table>
             <thead>
               <tr>
-                <th> nom </th>
+                <th > nom </th>
                 <th> Prenom </th>
                 <th> email </th>
                 <th> Telephone </th>
@@ -85,11 +87,15 @@ class App extends Component {
           />
         ))}
 
+
+
         <ModalExample
           handleChange={this.handleChange}
           contact={this.state}
           action={this.addContact}
         />
+
+       
       </div>
     );
   }
