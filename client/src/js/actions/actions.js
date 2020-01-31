@@ -23,7 +23,7 @@ axios.get('/contacts')
  //update
   export const putContact=(id,updatedContact)=>dispatch=>{
       axios.put(`/contacts/${id}`,updatedContact)
-      .then(res=>dispatch(getContacts()))
+      .then(res=>dispatch({type:"UPDATE",payload:res.data}))
 .catch(err=>console.log(err))
 
   }
