@@ -1,9 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import { Grid, Row, Col, Table } from "react-bootstrap";
 import "./Login.css";
-export default function ContactCart({ contact, deleteContact, getPerson }) {
-  console.log("contact.email", contact.email);
+import ModalExample from "./modal";
+import { useDispatch } from "react-redux";
+
+const ContactCard = props => {
+  const { nom, prenom, email, telephone, role, action } = props.contact;
+  const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
+
+  // console.log("contact.email", contact.email);
   return (
     <div className="contact-card">
       <div className="content">
@@ -13,28 +19,30 @@ export default function ContactCart({ contact, deleteContact, getPerson }) {
               <Table striped hover>
                 <thead>
                   <tr>
-                    <th> {contact.nom} </th>
-                    <th> {contact.prenom} </th>
-                    <th> {contact.email} </th>
-                    <th> {contact.telephone} </th>
-                    <th> {contact.role} </th>
-                    <th> {contact.action} </th>
+                    <th> {nom} </th>
+                    <th> {prenom} </th>
+                    <th> {email} </th>
+                    <th> {telephone} </th>
+                    <th> {role} </th>
+                    <th> {action} </th>
                     <th>
-                      <Link to="/edit-contact">
-                        <i
+                      <button onClick={setShow(true)}>edit</button>
+                      <ModalExample isOpen={show} toggle={setShow} />
+                      {/* <ModalExample handleChange={handleChange} /> */}
+                      {/* <i
                           class="fa fa-pencil-square-o"
                           aria-hidden="true"
                           onClick={() => getPerson(contact)}
                         ></i>
-                      </Link>
-                      <Link>
-                        <i
-                          className="fa fa-trash-o"
-                          aria-hidden="true"
-                          style={{ minWidth: "223px", maxWidth: "180px" }}
-                          onClick={() => deleteContact(contact._id)}
-                        ></i>
-                      </Link>
+                       */}
+                      {/* <img src={edit} /> */}
+                      {/* 
+                      <i
+                        className="fa fa-trash-o x"
+                        aria-hidden="true"
+                        style={{ minWidth: "223px", maxWidth: "180px" }}
+                        onClick={() => deleteContact(contact._id)}
+                      ></i> */}
                     </th>
                   </tr>
                 </thead>
@@ -45,4 +53,6 @@ export default function ContactCart({ contact, deleteContact, getPerson }) {
       </div>
     </div>
   );
-}
+};
+
+export default ContactCard;

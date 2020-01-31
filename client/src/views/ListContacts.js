@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ModalExample from "./modal";
+
 import { connect } from "react-redux";
 import {
   getContacts,
@@ -48,6 +49,7 @@ class App extends Component {
     this.props.postContact(this.state);
     // this.reset();
   };
+
   componentDidMount = () => {
     this.props.getContacts();
   };
@@ -77,6 +79,7 @@ class App extends Component {
         {this.props.contacts.map(el => (
           <ContactCard
             deleteContact={this.props.deleteContact}
+            putContact={this.props.putContact}
             getPerson={this.getPerson}
             contact={el}
           />
