@@ -1,17 +1,16 @@
-import React, { useState } from "react";
-import { Grid, Row, Col, Table } from "react-bootstrap";
-import "./Login.css";
-import ModalExample from "./modal";
-import { useDispatch } from "react-redux";
+import React, { useState } from 'react';
+import { Grid, Row, Col, Table } from 'react-bootstrap';
+import './Login.css';
+import EditModal from './modaledit';
 
 const ContactCard = props => {
+  console.log('TCL: props', props);
   const { nom, prenom, email, telephone, role, action } = props.contact;
   const [show, setShow] = useState(false);
-  const dispatch = useDispatch();
 
   return (
-    <div className="contact-card">
-      <div className="content">
+    <div className='contact-card'>
+      <div className='content'>
         <Grid fluid>
           <Row>
             <Col md={12}>
@@ -25,8 +24,12 @@ const ContactCard = props => {
                     <th> {role} </th>
                     <th> {action} </th>
                     <th>
-                      <button onClick={setShow(true)}>edit</button>
-                      <ModalExample isOpen={show} toggle={setShow} />
+                      <button onClick={() => setShow(true)}>edit</button>
+                      <EditModal
+                        isOpen={show}
+                        toggle={setShow}
+                        contact={props.contact}
+                      />
                       {/* <ModalExample handleChange={handleChange} /> */}
                       {/* <i
                           class="fa fa-pencil-square-o"
