@@ -1,32 +1,40 @@
-import axios from 'axios';
+import axios from "axios";
 
 //get
-export const getContacts = () => dispatch => {
+export const getContacts = () => async dispatch => {
   axios
-    .get('/contacts')
-    .then(res => dispatch({ type: 'GET-CONTACT', payload: res.data }))
+    .get("/contacts")
+    .then(res => dispatch({ type: "GET-CONTACT", payload: res.data }))
     .catch(err => console.log(err));
 };
 
 //add
-export const postContact = newcontact => dispatch => {
-  axios
-    .post('/contacts', newcontact)
-    .then(res => dispatch(getContacts()))
-    .catch(err => console.log(err));
+export const postContact = newcontact => async dispatch => {
+  try {
+    axios
+      .post("/contacts", newcontact)
+      .then(res => dispatch(getContacts()))
+      .catch(err => console.log(err));
+  } catch (err) {
+    console.error("", err.message);
+  }
 };
 //delete
-export const deleteContact = id => dispatch => {
-  axios
-    .delete(`/contacts/${id}`)
-    .then(res => dispatch(getContacts()))
-    .catch(err => console.log(err));
+export const deleteContact = id => async dispatch => {
+  try {
+    axios
+      .delete(`/contacts/${id}`)
+      .then(res => dispatch(getContacts()))
+      .catch(err => console.log(err));
+  } catch (err) {
+    console.error("", err.message);
+  }
 };
 //update
-export const putContact = updatedContact => dispatch => {
-  console.log('TCL: id', updatedContact.id);
+export const putContact = updatedContact => async dispatch => {
+  console.log("TCL: id", updatedContact.id);
   axios
     .put(`/contacts/${updatedContact.id}`, updatedContact)
-    .then(res => dispatch({ type: 'UPDATE', payload: res.data }))
+    .then(res => dispatch({ type: "UPDATE", payload: res.data }))
     .catch(err => console.log(err));
 };
