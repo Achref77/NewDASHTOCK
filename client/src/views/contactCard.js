@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
-import { Grid, Row, Col, Table } from 'react-bootstrap';
-import './Login.css';
-import EditModal from './modaledit';
-
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Grid, Row, Col, Table } from "react-bootstrap";
+import "./Login.css";
+import EditModal from "./modaledit";
+import { deleteContact } from "../js/actions/actions";
 const ContactCard = props => {
-  console.log('TCL: props', props);
-  const { nom, prenom, email, telephone, role, action } = props.contact;
+  console.log("TCL: props", props);
+  const { _id, nom, prenom, email, telephone, role, action } = props.contact;
   const [show, setShow] = useState(false);
-
+  const dispatch = useDispatch();
+  const delet = () => {
+    dispatch(deleteContact(_id));
+  };
   return (
-    <div className='contact-card'>
-      <div className='content'>
+    <div className="contact-card">
+      <div className="content">
         <Grid fluid>
           <Row>
             <Col md={12}>
@@ -24,27 +28,26 @@ const ContactCard = props => {
                     <th> {role} </th>
                     <th> {action} </th>
                     <th>
-                      <button onClick={() => setShow(true)}>edit</button>
+                      <i
+                        class="fa fa-pencil-square-o"
+                        aria-hidden="true"
+                        onClick={() => setShow(true)}
+                      ></i>
+                      {/* <button onClick={() => setShow(true)}>edit</button> */}
                       <EditModal
                         isOpen={show}
                         toggle={setShow}
                         contact={props.contact}
                       />
-                      {/* <ModalExample handleChange={handleChange} /> */}
-                      {/* <i
-                          class="fa fa-pencil-square-o"
-                          aria-hidden="true"
-                          onClick={() => getPerson(contact)}
-                        ></i>
-                       */}
+
                       {/* <img src={edit} /> */}
-                      {/* 
+
                       <i
                         className="fa fa-trash-o x"
                         aria-hidden="true"
                         style={{ minWidth: "223px", maxWidth: "180px" }}
-                        onClick={() => deleteContact(contact._id)}
-                      ></i> */}
+                        onClick={() => dispatch(delet(_id))}
+                      ></i>
                     </th>
                   </tr>
                 </thead>
@@ -56,4 +59,5 @@ const ContactCard = props => {
     </div>
   );
 };
+
 export default ContactCard;
