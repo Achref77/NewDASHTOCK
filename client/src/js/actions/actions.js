@@ -22,10 +22,10 @@ export const postContact = newcontact => async dispatch => {
 //delete
 export const deleteContact = id => async dispatch => {
   try {
-    axios
-      .delete(`/contacts/${id}`)
-      .then(res => dispatch(getContacts()))
-      .catch(err => console.log(err));
+    const res = await axios.delete(`/contacts/${id}`);
+    console.log("body", res);
+    dispatch(getContacts());
+    // .catch(err => console.log(err));
   } catch (err) {
     console.error("", err.message);
   }
