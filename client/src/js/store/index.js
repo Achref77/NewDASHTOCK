@@ -2,6 +2,7 @@ import { createStore, compose, applyMiddleware, combineReducers } from "redux";
 // import Tttttt from "../reducers/index";
 import thunk from "redux-thunk";
 import Reducer from "js/reducers/reducer";
+import Stocks from "js/reducers/stock" ;
 import auth from "js/reducers/auth";
 const middleWare = [thunk];
 
@@ -18,7 +19,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 //   }
 // };
 const store = createStore(
-  combineReducers({ Reducer, auth }),
+  combineReducers({ Reducer, auth, Stocks }),
 
   composeEnhancers(applyMiddleware(...middleWare))
 );

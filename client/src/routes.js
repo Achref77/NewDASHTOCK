@@ -3,6 +3,7 @@ import TableList from "views/ListContacts.js";
 import PRODUITS from "views/PRODUITS.jsx";
 import CLIENTS from "views/CLIENTS.jsx";
 import FORNUSSEURS from "views/FORNUSSEURS.jsx";
+import Stock from "views/Stock.js";
 
 const dashboardRoutes = [
   {
@@ -20,10 +21,10 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    path: "/FormPage",
+    path: "/STOCKS",
     name: "STOCK",
     icon: "fa fa-stack-exchange",
-    component: TableList,
+    component: Stock,
     layout: "/admin"
   },
 
