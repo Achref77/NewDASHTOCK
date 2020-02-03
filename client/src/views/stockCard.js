@@ -3,18 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { Grid, Row, Col, Table } from "react-bootstrap";
 import "./Login.css";
 import EditModal from "./modaledit";
-import { deleteContact } from "../js/actions/actions";
-const ContactCard = props => {
+import { deleteStock } from "../js/actions/actions";
+
+
+const StockCard = props => {
   console.log("TCL: props", props);
-  const { _id, nom, prenom, email, telephone, role, action } = props.contact;
+  const { _id, stockInitial, stockMinimum, stockSecurite, action } = props.stock;
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
-  const delet = () => async dispatch => {
-    try {
-      await dispatch(deleteContact(_id));
-    } catch (err) {
-      console.error("", err.message);
-    }
+  const delet = () => {
+    dispatch(deleteStock(_id));
   };
   return (
     <div className="contact-card">
@@ -25,11 +23,9 @@ const ContactCard = props => {
               <Table striped hover>
                 <thead>
                   <tr>
-                    <th> {nom} </th>
-                    <th> {prenom} </th>
-                    <th> {email} </th>
-                    <th> {telephone} </th>
-                    <th> {role} </th>
+                    <th> {stockInitial} </th>
+                    <th> {stockMinimum} </th>
+                    <th> {stockSecurite} </th>
                     <th> {action} </th>
                     <th>
                       <i
@@ -41,9 +37,11 @@ const ContactCard = props => {
                       <EditModal
                         isOpen={show}
                         toggle={setShow}
-                        contact={props.contact}
+                        stock={props.stock}
                       />
+
                       {/* <img src={edit} /> */}
+
                       <i
                         className="fa fa-trash-o x"
                         aria-hidden="true"
@@ -61,4 +59,5 @@ const ContactCard = props => {
     </div>
   );
 };
-export default ContactCard;
+
+export default StockCard;

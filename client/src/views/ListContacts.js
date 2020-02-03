@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import ModalExample from "./modal";
 
 import { connect } from "react-redux";
@@ -8,8 +9,11 @@ import {
   postContact,
   putContact
 } from "../../src/js/actions/actions";
+
 import ContactCard from "./contactCard";
+
 import { Grid, Row, Col, Table } from "react-bootstrap";
+
 class App extends Component {
   state = {
     nom: "",

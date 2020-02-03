@@ -14,6 +14,8 @@ app.use(express.json({ extended: false }));
 
 app.use('/users', require('./routes/api/auth'));
 app.use("/contacts", require("./routes/contact"));
+app.use("/stocks", require("./routes/stock"));
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
