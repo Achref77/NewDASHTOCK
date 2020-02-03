@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import React, { Component } from "react";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 class ModalExample extends React.Component {
   constructor(props) {
     super(props);
@@ -16,12 +16,12 @@ class ModalExample extends React.Component {
   }
   render() {
     return (
-      <div className='modal-container'>
+      <div className="modal-container">
         <Button
           // className="btn-secondary"
           // color="danger"
           onClick={this.toggle}
-          value='+'
+          value="+"
         >
           Ajouter{this.props.buttonLabel}
         </Button>
@@ -35,64 +35,64 @@ class ModalExample extends React.Component {
             Ajouter nouveau utilisateur
           </ModalHeader>
           <ModalBody>
-            <div className='add-card'>
-              <p className='card-title-add'>Ajouter contact</p>
+            <div className="add-card">
+              <p className="card-title-add">Ajouter liste</p>
               <p>Nom</p>
               <input
-                name='nom'
-                type='text'
-                placeholder='Nom...'
+                name="nom"
+                type="text"
+                placeholder="Nom..."
                 onChange={this.props.handleChange}
-                value={this.props.contact.nom}
+                value={this.props.liste.nom}
               />
               <p>Prenom</p>
               <input
-                name='prenom'
-                type='text'
-                placeholder='Prenom...'
+                name="prenom"
+                type="text"
+                placeholder="Prenom..."
                 onChange={this.props.handleChange}
-                value={this.props.contact.prenom}
+                value={this.props.liste.prenom}
               />
               <p>Telephone</p>
               <input
-                name='telephone'
-                type='text'
-                placeholder='telephone...'
+                name="telephone"
+                type="text"
+                placeholder="telephone..."
                 onChange={this.props.handleChange}
-                value={this.props.contact.telephone}
+                value={this.props.liste.telephone}
               />
-              <p>Email</p>{' '}
+              <p>Email</p>{" "}
               <input
-                name='email'
-                type='text'
-                placeholder='Email...'
+                name="email"
+                type="text"
+                placeholder="Email..."
                 onChange={this.props.handleChange}
-                value={this.props.contact.email}
+                value={this.props.liste.email}
               />
               <p>Role</p>
               <select
-                name='role'
+                name="role"
                 onChange={this.props.handleChange}
-                value={this.props.contact.role}
+                value={this.props.liste.role}
               >
-                <option value='choisir un role'>choisir Le role</option>
-                <option value='Admin'>Admin</option>
-                <option value='GERANT'>GERANT</option>
-                <option value='magazinier'>Magazinier</option>
-                <input type='submit' />
+                <option value="choisir un role">choisir Le role</option>
+                <option value="Admin">Admin</option>
+                <option value="GERANT">GERANT</option>
+                <option value="magazinier">Magazinier</option>
+                <input type="submit" />
               </select>
             </div>
           </ModalBody>
           <ModalFooter>
             {/* <Button color="primary" className="add-btn" onClick={() => this.props.add(this.state.addlist)} >validate</Button>{' '} */}
             <Button
-              color='primary'
-              className='add-btn'
+              color="primary"
+              className="add-btn"
               onClick={this.props.action}
             >
               valider
-            </Button>{' '}
-            <Button color='secondary' className='add-btn' onClick={this.toggle}>
+            </Button>{" "}
+            <Button color="secondary" className="add-btn" onClick={this.toggle}>
               Cancel
             </Button>
           </ModalFooter>

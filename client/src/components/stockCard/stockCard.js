@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Grid, Row, Col, Table } from "react-bootstrap";
-import "./Login.css";
-import EditModal from "./modaledit";
-import { deleteStock } from "../js/actions/actions";
-
+import "../LoginUser/Login";
+import EditModal from "../user/modaledit";
+import { deleteStock } from "../../js/actions/actions";
 
 const StockCard = props => {
   console.log("TCL: props", props);
-  const { _id, stockInitial, stockMinimum, stockSecurite, action } = props.stock;
+  const {
+    _id,
+    stockInitial,
+    stockMinimum,
+    stockSecurite,
+    action
+  } = props.stock;
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const delet = () => {

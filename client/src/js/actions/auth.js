@@ -7,7 +7,6 @@ import {
   LOGOUT,
   LOGIN_FAIL
 } from "../constants/action-types";
-
 //USER LOADER
 export const loadUser = token => async dispatch => {
   // console.log(token);
@@ -30,7 +29,6 @@ export const loadUser = token => async dispatch => {
     });
   }
 };
-
 export const register = ({
   name,
   email,
@@ -53,7 +51,6 @@ export const register = ({
   } catch (err) {
     // console.error('this error from auth.js', err.message);
     const errors = err.response.data.errors;
-
     if (errors) {
       errors.forEach(error => console.error(error.msg, "danger"));
     }
@@ -62,7 +59,6 @@ export const register = ({
     });
   }
 };
-
 export const loginUser = ({ email, password }) => async dispatch => {
   const config = {
     headers: {
@@ -73,7 +69,6 @@ export const loginUser = ({ email, password }) => async dispatch => {
   try {
     const res = await axios.post("/users/login", body, config);
     console.log("body", res);
-
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data

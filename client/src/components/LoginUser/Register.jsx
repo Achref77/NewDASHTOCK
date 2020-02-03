@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect, Link } from "react-router-dom";
+import { Button } from "reactstrap";
+import { useDispatch } from "react-redux";
 import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./Login.css";
-import { register } from "../js/actions/auth";
+import { register } from "../../js/actions/auth";
 import logo from "assets/img/logoProject.png";
 function RegisterPage(props) {
   const [newUser, setUser] = useState({
@@ -17,7 +16,6 @@ function RegisterPage(props) {
   // const addUser = () => {
   //   dispatch(register(newUser));
   // };
-
   document.documentElement.classList.remove("nav-open");
   useEffect(() => {
     document.body.classList.add("register-page");
@@ -25,19 +23,16 @@ function RegisterPage(props) {
       document.body.classList.remove("register-page");
     };
   });
-
   function validateForm() {
     const { email, password } = newUser;
     return email.length > 0 && password.length > 0;
   }
-
   function handleSubmit(event) {
     event.preventDefault();
     dispatch(register(newUser))
       .then(data => props.history.push("/login"))
       .catch(err => console.log(err));
   }
-
   return (
     <div className="Login">
       <form onSubmit={handleSubmit}>
@@ -52,7 +47,6 @@ function RegisterPage(props) {
               onChange={e => setUser({ ...newUser, name: e.target.value })}
             />
           </FormGroup>
-
           <FormGroup controlId="email" bsSize="large">
             <ControlLabel>Email</ControlLabel>
             <FormControl
@@ -78,7 +72,6 @@ function RegisterPage(props) {
               type="password"
             />
           </FormGroup>
-
           <Button
             className="submitForm"
             block

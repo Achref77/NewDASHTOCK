@@ -6,7 +6,7 @@ import {
   postStocks,
   putStocks
 } from "../../src/js/actions/actions";
-import StockCard from "./stockCard";
+import StockCard from "../components/stockCard/stockCard";
 import { Grid, Row, Col, Table } from "react-bootstrap";
 
 class Stock extends Component {
@@ -96,5 +96,4 @@ const MapStateToProps = state => ({
 export default connect(MapStateToProps, {
   getStocks,
   deleteStock
-  
 })(Stock);

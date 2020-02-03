@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export class UserCard extends Component {
+export class listeCard extends Component {
   render() {
     return (
       <div className="card card-user">
@@ -18,7 +18,7 @@ export class UserCard extends Component {
               <h4 className="title">
                 {this.props.name}
                 <br />
-                <small>{this.props.userName}</small>
+                <small>{this.props.listeName}</small>
               </h4>
             </a>
           </div>
@@ -31,4 +31,4 @@ export class UserCard extends Component {
   }
 }
 
-export default UserCard;
+export default listeCard;

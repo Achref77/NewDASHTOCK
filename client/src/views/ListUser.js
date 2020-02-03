@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 
-import ModalExample from "./modal";
+import ModalExample from "../components/user/modal";
 
 import { connect } from "react-redux";
 import {
-  getContacts,
-  deleteContact,
-  postContact,
-  putContact
-} from "../../src/js/actions/actions";
-
-import ContactCard from "./contactCard";
+  getListe,
+  deleteListe,
+  postListe,
+  putListe
+} from "../js/actions/actions";
+import ListCard from "../components/user/ListCard";
 
 import { Grid, Row, Col, Table } from "react-bootstrap";
 
@@ -24,14 +23,14 @@ class App extends Component {
     id: "",
     edit: false
   };
-  getPerson = contact => {
+  getPerson = liste => {
     this.setState({
-      nom: contact.nom,
-      prenom: contact.prenom,
-      telephone: contact.telephone,
-      email: contact.email,
-      role: contact.role,
-      id: contact._id,
+      nom: liste.nom,
+      prenom: liste.prenom,
+      telephone: liste.telephone,
+      email: liste.email,
+      role: liste.role,
+      id: liste._id,
       edit: true
     });
   };
@@ -49,18 +48,18 @@ class App extends Component {
       role: ""
     });
   };
-  addContact = () => {
-    this.props.postContact(this.state);
+  addListe = () => {
+    this.props.postListe(this.state);
     // this.reset();
   };
 
   componentDidMount = () => {
-    this.props.getContacts();
+    this.props.getListe();
   };
   render() {
     return (
-      <div className="contact-card">
-        <div className="content">
+      <div className="user-card">
+        <div className="user">
           <Grid fluid>
             <Row>
               <Col md={12}>
@@ -80,12 +79,12 @@ class App extends Component {
             </Row>
           </Grid>
         </div>
-        {this.props.contacts.map(el => (
-          <ContactCard
-            deleteContact={this.props.deleteContact}
-            putContact={this.props.putContact}
+        {this.props.liste.map(el => (
+          <ListCard
+            deleteListe={this.props.deleteListe}
+            putListe={this.props.putListe}
             getPerson={this.getPerson}
-            contact={el}
+            liste={el}
           />
         ))}
         <Grid fluid>
@@ -93,8 +92,8 @@ class App extends Component {
             <Col md={12}>
               <ModalExample
                 handleChange={this.handleChange}
-                contact={this.state}
-                action={this.addContact}
+                liste={this.state}
+                action={this.addListe}
               />
             </Col>
           </Row>
@@ -104,11 +103,11 @@ class App extends Component {
   }
 }
 const MapStateToProps = state => ({
-  contacts: state.Reducer.contacts
+  liste: state.Reducer.liste
 });
 export default connect(MapStateToProps, {
-  getContacts,
-  deleteContact,
-  putContact,
-  postContact
+  getListe,
+  deleteListe,
+  postListe,
+  putListe
 })(App);
