@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Grid, Row, Col, Table } from "react-bootstrap";
-import "./Login.css";
+// import "./Login.css";
 import EditModal from "./modaledit";
-import { deleteContact } from "../js/actions/actions";
-const ContactCard = props => {
+import { deleteListe } from "../../js/actions/actions";
+const ListCard = props => {
   console.log("TCL: props", props);
-  const { _id, nom, prenom, email, telephone, role, action } = props.contact;
+  const { _id, nom, prenom, email, telephone, role, action } = props.liste;
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const delet = () => async dispatch => {
     try {
-      await dispatch(deleteContact(_id));
+      await dispatch(deleteListe(_id));
     } catch (err) {
       console.error("", err.message);
     }
   };
   return (
-    <div className="contact-card">
+    <div className="user-card">
       <div className="content">
         <Grid fluid>
           <Row>
@@ -41,7 +41,7 @@ const ContactCard = props => {
                       <EditModal
                         isOpen={show}
                         toggle={setShow}
-                        contact={props.contact}
+                        liste={props.liste}
                       />
                       {/* <img src={edit} /> */}
                       <i
@@ -61,4 +61,4 @@ const ContactCard = props => {
     </div>
   );
 };
-export default ContactCard;
+export default ListCard;
