@@ -21,23 +21,23 @@ router.delete("/:id", (req, res) => {
 // update
 router.put("/:id", (req, res) => {
   console.log("TCL: req.params.id", req.params.id);
-  const { nom, prenom, telephone, email, role } = req.body;
+  const { nom, prenom, email, password, role } = req.body;
   liste
     .findOneAndUpdate(
       { _id: req.params.id },
-      { $set: { nom, telephone, email, prenom, role } }
+      { $set: { nom, email, password, prenom, role } }
     )
     .then(liste => res.send(liste))
     .catch(err => console.log(err));
 });
 // add
 router.post("/", (req, res) => {
-  const { nom, telephone, email, prenom, role } = req.body;
+  const { nom, email, password, prenom, role } = req.body;
   const newliste = new liste({
     nom,
     prenom,
-    telephone,
     email,
+    password,
     role
   });
   newliste

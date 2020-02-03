@@ -23,7 +23,7 @@ class EditModal extends React.Component {
       nom: "",
       prenom: "",
       email: "",
-      telephone: "",
+      password: "",
       role: ""
     };
   }
@@ -35,7 +35,7 @@ class EditModal extends React.Component {
       nom,
       prenom,
       email,
-      telephone,
+      password,
       role,
       action
     } = this.props.liste;
@@ -75,13 +75,14 @@ class EditModal extends React.Component {
             onChange={e => this.setState({ email: e.target.value })}
           />
           <input
-            defaultValue={telephone}
-            type="text"
+            defaultValue={password}
+            type="password"
+            value="password"
             class="form-control"
-            placeholder="telephone"
-            id="telephone"
+            placeholder="password"
+            id="password"
             name=""
-            onChange={e => this.setState({ telephone: e.target.value })}
+            onChange={e => this.setState({ password: e.target.value })}
           />
           <input
             defaultValue={role}
@@ -107,7 +108,6 @@ class EditModal extends React.Component {
                 nom: this.state.nom,
                 prenom: this.state.prenom,
                 email: this.state.email,
-                telephone: this.state.telephone,
                 role: this.state.role
               })
             }

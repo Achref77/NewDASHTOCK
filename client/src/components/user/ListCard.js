@@ -6,7 +6,7 @@ import EditModal from "./modaledit";
 import { deleteListe } from "../../js/actions/actions";
 const ListCard = props => {
   console.log("TCL: props", props);
-  const { _id, nom, prenom, email, telephone, role, action } = props.liste;
+  const { _id, nom, prenom, email, role, password, action } = props.liste;
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const delet = () => async dispatch => {
@@ -28,7 +28,7 @@ const ListCard = props => {
                     <th> {nom} </th>
                     <th> {prenom} </th>
                     <th> {email} </th>
-                    <th> {telephone} </th>
+                    <th> {password} </th>
                     <th> {role} </th>
                     <th> {action} </th>
                     <th>

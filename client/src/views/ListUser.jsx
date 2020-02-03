@@ -17,8 +17,8 @@ class App extends Component {
   state = {
     nom: "",
     prenom: "",
-    Telephone: "",
     email: "",
+    password: "",
     role: "",
     id: "",
     edit: false
@@ -27,8 +27,8 @@ class App extends Component {
     this.setState({
       nom: liste.nom,
       prenom: liste.prenom,
-      telephone: liste.telephone,
       email: liste.email,
+      password: liste.password,
       role: liste.role,
       id: liste._id,
       edit: true
@@ -43,8 +43,8 @@ class App extends Component {
     this.setState({
       nom: "",
       prenom: "",
-      telephone: "",
       email: "",
+      password: "",
       role: ""
     });
   };
@@ -69,7 +69,7 @@ class App extends Component {
                       <th> nom </th>
                       <th> Prenom </th>
                       <th> email </th>
-                      <th> Telephone </th>
+                      <th> password </th>
                       <th> role </th>
                       <th> Action </th>
                     </tr>
