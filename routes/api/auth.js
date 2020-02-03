@@ -32,7 +32,10 @@ router.post("/login", validationRule(), validate, async (req, res) => {
     const payload = {
       user: {
         id: user.id
+
+        
         // role :Liste.role
+
       }
     };
     jwt.sign(
