@@ -216,7 +216,7 @@ var style = {
 // // // For tables
 // //
 //
-const thArray = ["Nom", "Prenom", "Email", "Telephone", "Role", "Action"];
+const thArray = ["Nom", "Prenom", "Email", "password", "Role", "Action"];
 const tdArray = [" dd"];
 //
 // //

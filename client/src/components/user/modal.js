@@ -53,14 +53,6 @@ class ModalExample extends React.Component {
                 onChange={this.props.handleChange}
                 value={this.props.liste.prenom}
               />
-              <p>Telephone</p>
-              <input
-                name="telephone"
-                type="text"
-                placeholder="telephone..."
-                onChange={this.props.handleChange}
-                value={this.props.liste.telephone}
-              />
               <p>Email</p>{" "}
               <input
                 name="email"
@@ -68,6 +60,14 @@ class ModalExample extends React.Component {
                 placeholder="Email..."
                 onChange={this.props.handleChange}
                 value={this.props.liste.email}
+              />
+              <p>Password</p>{" "}
+              <input
+                name="password"
+                type="password"
+                placeholder="password..."
+                onChange={this.props.handleChange}
+                value={this.props.liste.password}
               />
               <p>Role</p>
               <select

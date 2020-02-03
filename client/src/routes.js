@@ -1,9 +1,9 @@
 import Dashboard from "views/Dashboard.jsx";
-import TableList from "./views/ListUser";
+import TableList from "./views/ListUser.jsx";
 import PRODUITS from "views/PRODUITS.jsx";
 import CLIENTS from "views/CLIENTS.jsx";
 import FORNUSSEURS from "views/FORNUSSEURS.jsx";
-import Stock from "views/Stock.js";
+import Stock from "views/Stock.jsx";
 
 const dashboardRoutes = [
   {

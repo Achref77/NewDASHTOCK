@@ -1,43 +1,46 @@
-const express = require('express');
-const bcrypt = require('bcryptjs');
-const config = require('config');
-const jwt = require('jsonwebtoken');
-const User = require('../../models/User');
+const express = require("express");
+const bcrypt = require("bcryptjs");
+const config = require("config");
+const jwt = require("jsonwebtoken");
+const User = require("../../models/User");
 const {
   validationRule,
   validationRegisterRule,
   validate
-} = require('../../middleware/checkValidator');
-const auth = require('../../middleware/auth');
+} = require("../../middleware/checkValidator");
+const auth = require("../../middleware/auth");
 
 const router = express.Router();
 
 //POST api/auth
-router.post('/login', validationRule(), validate, async (req, res) => {
+router.post("/login", validationRule(), validate, async (req, res) => {
   const { email, password } = req.body;
-  console.log('req.body', req.body);
+  console.log("req.body", req.body);
 
   try {
     //user deja inscrit
     let user = await User.findOne({ email });
-    console.log('user', user);
+    console.log("user", user);
     if (!user) {
-      return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
+      return res.status(400).json({ errors: [{ msg: "Invalid Credentials" }] });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
+      return res.status(400).json({ errors: [{ msg: "Invalid Credentials" }] });
     }
     const payload = {
       user: {
         id: user.id
+
         
+        // role :Liste.role
+
       }
     };
     jwt.sign(
       payload,
-      config.get('jwtSecret'),
+      config.get("jwtSecret"),
       { expiresIn: 40000 },
       (err, token) => {
         if (err) throw err;
@@ -47,14 +50,14 @@ router.post('/login', validationRule(), validate, async (req, res) => {
   } catch (err) {
     // si il ya un erreur
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 });
 // @route   POST api/user
 // @desc    Register route
 // @access  Public
 router.post(
-  '/register',
+  "/register",
   validationRegisterRule(),
   validate,
   async (req, res) => {
@@ -65,7 +68,7 @@ router.post(
       if (user)
         return res
           .status(400)
-          .json({ errors: [{ msg: 'user already exists' }] });
+          .json({ errors: [{ msg: "user already exists" }] });
 
       user = new User({
         name,
@@ -85,7 +88,7 @@ router.post(
       };
       jwt.sign(
         payload,
-        config.get('jwtSecret'),
+        config.get("jwtSecret"),
         { expiresIn: 3600 },
         (err, token) => {
           if (err) throw err;
@@ -94,19 +97,19 @@ router.post(
       );
     } catch (err) {
       console.error(err.message);
-      res.status(500).send('server error');
+      res.status(500).send("server error");
     }
   }
 );
 
 // Get api/auth
-router.get('/me', auth, async (req, res) => {
+router.get("/me", auth, async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select('-password');
+    const user = await User.findById(req.user.id).select("-password");
     res.json(user);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 });
 

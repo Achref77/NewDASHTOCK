@@ -5,7 +5,7 @@ import {
   deleteStock,
   postStocks,
   putStocks
-} from "../../src/js/actions/actions";
+} from "../js/actions/actions";
 import StockCard from "../components/stockCard/stockCard";
 import { Grid, Row, Col, Table } from "react-bootstrap";
 
