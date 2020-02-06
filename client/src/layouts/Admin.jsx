@@ -45,7 +45,8 @@ class Admin extends Component {
       } else if (
         jwt_decode(localStorage.getItem("token")).user.role[0] ===
           "Magazinier" &&
-        prop.layout === "/admin" && prop.direction === "Magazinier"
+        prop.layout === "/admin" &&
+        prop.direction === "Magazinier"
       ) {
         return (
           <Route
