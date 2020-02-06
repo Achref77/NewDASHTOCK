@@ -60,16 +60,16 @@ export const postClient = newclient => async dispatch => {
   }
 };
 //delete client
-export const deleteClient = id => async dispatch => {
-  try {
-    const res = await axios.delete(`/clients/${id}`);
-    console.log("body", res);
-    dispatch(getClients());
-    // .catch(err => console.log(err));
-  } catch (err) {
-    console.error("", err.message);
-  }
-};
+// export const deleteClient = id => async dispatch => {
+//   try {
+//     const res = await axios.delete(`/clients/${id}`);
+//     console.log("body", res);
+//     dispatch(getClients());
+//     // .catch(err => console.log(err));
+//   } catch (err) {
+//     console.error("", err.message);
+//   }
+// };
 //update client
 export const putClient = updatedClient => async dispatch => {
   console.log("TCL: id", updatedClient.id);

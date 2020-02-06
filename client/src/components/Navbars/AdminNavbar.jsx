@@ -33,9 +33,10 @@ class Header extends Component {
       <Navbar fluid>
         <Navbar.Header>
           <p>
-            <i className="fa fa-user" />
-            {jwt_decode(localStorage.getItem("token")).user.nom}({" "}
-            {jwt_decode(localStorage.getItem("token")).user.role})
+            <i className="fa fa-user" />{" "}
+            {jwt_decode(localStorage.getItem("token")).user.prenom}{" "}
+            {jwt_decode(localStorage.getItem("token")).user.nom} {"|"}{" "}
+            {jwt_decode(localStorage.getItem("token")).user.role}
           </p>
           <Navbar.Brand>
             <a href="#pablo">{this.props.brandText}</a>

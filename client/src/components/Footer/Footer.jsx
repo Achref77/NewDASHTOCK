@@ -8,7 +8,7 @@ class Footer extends Component {
         <Grid fluid>
           <nav className="pull-left"></nav>
           <p className="copyright pull-right">
-            &copy; {new Date().getFullYear()} , DASHTOCK
+            &copy; {new Date().getFullYear()} , DASTOCK
           </p>
         </Grid>
       </footer>
