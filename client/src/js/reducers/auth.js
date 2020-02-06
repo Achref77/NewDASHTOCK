@@ -6,19 +6,25 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  GETliste,
+  UPDATE,
   LOAD_SUCCESS
-} from '../constants/action-types';
+} from "../constants/action-types";
 
+import jwt_decode from "jwt-decode";
 const initialState = {
-  token: localStorage.getItem('token'),
+  token: localStorage.getItem("token"),
   isAuth: false,
   loading: false,
-  user: {
-    name: '',
-    email: '',
-    password: '',
-    avatar: ''
-  }
+  user: [
+    {
+      nom: "",
+      prenom: "",
+      email: "",
+      password: "",
+      role: []
+    }
+  ]
 };
 const auth = (state = initialState, action) => {
   const { type, payload } = action;
@@ -38,7 +44,12 @@ const auth = (state = initialState, action) => {
         loading: false
       };
     case LOGIN_SUCCESS:
-      localStorage.setItem('token', payload.token);
+      // const role = jwt.decode("role", payload.token).user.role[0];
+      localStorage.setItem("token", payload.token);
+      localStorage.setItem("role", payload.role);
+      localStorage.setItem("password", payload.password);
+      var decoded = jwt_decode(payload.token);
+      console.log("decoded", decoded);
       return {
         ...state,
         ...payload,
@@ -49,7 +60,7 @@ const auth = (state = initialState, action) => {
     case AUTH_ERROR:
     case LOGIN_FAIL:
     case LOGOUT:
-      localStorage.removeItem('token');
+      localStorage.removeItem("token");
       return {
         ...state,
         token: null,
@@ -59,7 +70,17 @@ const auth = (state = initialState, action) => {
 
     // default:
     //   return state;
+    //////////////////////////////////////////////////////////
+    case GETliste:
+      return { ...state, user: action.payload };
 
+    case UPDATE:
+      return {
+        ...state,
+        liste: state.user.map((el, id) =>
+          id === action.payload.id ? { ...el, title: action.payload.task } : el
+        )
+      };
     default:
       return state;
   }

@@ -7,10 +7,16 @@ import {
   LOGOUT,
   LOGIN_FAIL
 } from "../constants/action-types";
+
+import setAuthToken from "../setAuthToken";
 //USER LOADER
 export const loadUser = token => async dispatch => {
   // console.log(token);
-  // if (token) setusersToken(localStorage.token);
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+  }
+
+  // setusersToken(localStorage.token);
   const config = {
     headers: {
       Authorization: token
@@ -30,23 +36,24 @@ export const loadUser = token => async dispatch => {
   }
 };
 export const register = ({
-  name,
+  nom,
+  prenom,
   email,
   password,
-  avatar
+  role
 }) => async dispatch => {
   const config = {
     headers: {
       "Content-Type": "application/json"
     }
   };
-  const body = JSON.stringify({ name, email, password, avatar });
+  const body = JSON.stringify({ nom, prenom, email, password, role });
   const res = await axios.post("/users/register", body, config);
   console.log(res);
   try {
     dispatch({
-      type: REGISTER_SUCCESS
-      // payload: res.data
+      type: REGISTER_SUCCESS,
+      payload: res.data
     });
   } catch (err) {
     // console.error('this error from auth.js', err.message);
@@ -69,6 +76,7 @@ export const loginUser = ({ email, password }) => async dispatch => {
   try {
     const res = await axios.post("/users/login", body, config);
     console.log("body", res);
+
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data
@@ -81,4 +89,45 @@ export const loginUser = ({ email, password }) => async dispatch => {
 };
 export const logout = () => dispatch => {
   dispatch({ type: LOGOUT });
+};
+///////////////////////////////////////////////////
+//get
+export const getUser = () => async dispatch => {
+  try {
+    const res = await axios.get("/users/you");
+    dispatch({ type: "GET-liste", payload: res.data });
+  } catch (err) {
+    console.error("", err.message);
+  }
+};
+//add
+export const postUser = newliste => async dispatch => {
+  try {
+    const res = await axios.post("/users/log", newliste);
+    dispatch(getUser());
+    // .catch(err => console.log(err));
+  } catch (err) {
+    console.error("", err.message);
+  }
+};
+//delete
+export const deleteUser = id => async dispatch => {
+  try {
+    const res = await axios.delete(`/users/${id}`);
+    console.log("body", res);
+    dispatch(getUser());
+    // .catch(err => console.log(err));
+  } catch (err) {
+    console.error("", err.message);
+  }
+};
+//update
+export const putUser = updatedUser => async dispatch => {
+  try {
+    const res = await axios.put(`/users/${updatedUser.id}`, updatedUser);
+
+    dispatch({ type: "UPDATE", payload: res.data });
+  } catch (err) {
+    console.error("", err.message);
+  }
 };

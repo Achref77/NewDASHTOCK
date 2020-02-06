@@ -33,6 +33,10 @@
     color: white;
   }
 }
-.fa {
-  margin-left: -144px;
+/* .btn-action {
+  margin-left: -173px;
+} */
+.icon-action {
+  display: flex;
+  margin-left: -185px;
 }

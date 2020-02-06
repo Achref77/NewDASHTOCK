@@ -1,28 +1,40 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { connect } from "react-redux";
+import { register } from "../../js/actions/auth";
+
 class ModalExample extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       modal: false,
-      redirect: false
+      redirect: false,
+      user: {
+        nom: "",
+        prenom: "",
+        email: "",
+        password: "",
+        role: ""
+      }
     };
-    this.toggle = this.toggle.bind(this);
   }
-  toggle() {
+  toggle = () => {
     this.setState({
       modal: !this.state.modal
     });
-  }
+  };
+
+  addUser = () => this.props.register(this.state.user);
+
+  handleChange = e =>
+    this.setState({
+      ...this.state,
+      user: { ...this.state.user, [e.target.name]: e.target.value }
+    });
   render() {
     return (
       <div className="modal-container">
-        <Button
-          // className="btn-secondary"
-          // color="danger"
-          onClick={this.toggle}
-          value="+"
-        >
+        <Button onClick={this.toggle} value="+">
           Ajouter{this.props.buttonLabel}
         </Button>
         <Modal
@@ -36,45 +48,37 @@ class ModalExample extends React.Component {
           </ModalHeader>
           <ModalBody>
             <div className="add-card">
-              <p className="card-title-add">Ajouter liste</p>
+              <p className="card-title-add">Ajouter user</p>
               <p>Nom</p>
               <input
                 name="nom"
                 type="text"
                 placeholder="Nom..."
-                onChange={this.props.handleChange}
-                value={this.props.liste.nom}
+                onChange={this.handleChange}
               />
               <p>Prenom</p>
               <input
                 name="prenom"
                 type="text"
                 placeholder="Prenom..."
-                onChange={this.props.handleChange}
-                value={this.props.liste.prenom}
+                onChange={this.handleChange}
               />
               <p>Email</p>{" "}
               <input
                 name="email"
                 type="text"
                 placeholder="Email..."
-                onChange={this.props.handleChange}
-                value={this.props.liste.email}
+                onChange={this.handleChange}
               />
               <p>Password</p>{" "}
               <input
                 name="password"
                 type="password"
                 placeholder="password..."
-                onChange={this.props.handleChange}
-                value={this.props.liste.password}
+                onChange={this.handleChange}
               />
               <p>Role</p>
-              <select
-                name="role"
-                onChange={this.props.handleChange}
-                value={this.props.liste.role}
-              >
+              <select name="role" onChange={this.handleChange}>
                 <option value="choisir un role">choisir Le role</option>
                 <option value="Admin">Admin</option>
                 <option value="GERANT">GERANT</option>
@@ -88,7 +92,11 @@ class ModalExample extends React.Component {
             <Button
               color="primary"
               className="add-btn"
-              onClick={this.props.action}
+              onClick={() => {
+                this.addUser();
+
+                this.toggle();
+              }}
             >
               valider
             </Button>{" "}
@@ -101,4 +109,4 @@ class ModalExample extends React.Component {
     );
   }
 }
-export default ModalExample;
+export default connect(null, { register })(ModalExample);

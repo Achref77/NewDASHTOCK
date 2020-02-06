@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch, Redirect, Link } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Login from "./components/LoginUser/Login";
 import Registeruser from "./components/LoginUser/Register";
@@ -23,3 +23,6 @@ const App = () => {
 };
 
 export default App;
+{
+  /* <i className='fas fa-user'> {user && user.nom} */
+}

@@ -7,7 +7,7 @@ import { register } from "../../js/actions/auth";
 import logo from "assets/img/logoProject.png";
 function RegisterPage(props) {
   const [newUser, setUser] = useState({
-    name: "",
+    nom: "",
     email: "",
     password: "",
     password2: ""
@@ -43,8 +43,8 @@ function RegisterPage(props) {
             <FormControl
               autoFocus
               type="texe"
-              value={newUser.name}
-              onChange={e => setUser({ ...newUser, name: e.target.value })}
+              value={newUser.nom}
+              onChange={e => setUser({ ...newUser, nom: e.target.value })}
             />
           </FormGroup>
           <FormGroup controlId="email" bsSize="large">

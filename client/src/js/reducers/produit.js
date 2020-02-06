@@ -1,18 +1,18 @@
 const initialState = {
-  liste: []
+  produits: []
 };
 
-const Reducer = (state = initialState, action) => {
+const Produits = (state = initialState, action) => {
   switch (action.type) {
-    case "GET-liste":
-      return { ...state, liste: action.payload };
+    case "GET-PRODUIT":
+      return { ...state, produits: action.payload };
   }
 
   switch (action.type) {
-    case "UPDATE":
+    case "UPDATEPRODUIT":
       return {
         ...state,
-        liste: state.liste.map((el, id) =>
+        produits: state.produits.map((el, id) =>
           id === action.payload.id ? { ...el, title: action.payload.task } : el
         )
       };
@@ -21,4 +21,4 @@ const Reducer = (state = initialState, action) => {
       return state;
   }
 };
-export default Reducer;
+export default Produits;

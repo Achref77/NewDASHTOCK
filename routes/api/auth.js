@@ -31,8 +31,10 @@ router.post("/login", validationRule(), validate, async (req, res) => {
     }
     const payload = {
       user: {
-        id: user.id
-        // role :Liste.role
+        id: user.id,
+        role: user.role,
+        nom: user.nom,
+        prenom: user.prenom
       }
     };
     jwt.sign(
@@ -58,7 +60,7 @@ router.post(
   validationRegisterRule(),
   validate,
   async (req, res) => {
-    const { name, email, password } = req.body;
+    const { nom, prenom, email, password, role } = req.body;
     try {
       // check if the user exists
       let user = await User.findOne({ email });
@@ -68,19 +70,23 @@ router.post(
           .json({ errors: [{ msg: "user already exists" }] });
 
       user = new User({
-        name,
+        nom,
+        prenom,
         email,
-        password
+        password,
+        role
       });
       //   encrypting the password
 
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt);
+
       await user.save();
       // toke access after registration
       const payload = {
         user: {
-          id: user.id
+          id: user.id,
+          role: user.role
         }
       };
       jwt.sign(
@@ -103,11 +109,61 @@ router.post(
 router.get("/me", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");
+
     res.json(user);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
+});
+////////////////////////////////////////////////
+
+// add
+router.post("/log", (req, res) => {
+  try {
+    const { nom, prenom, email, password, role } = req.body;
+    const user = new User({
+      nom,
+      prenom,
+      email,
+      password,
+      role
+    });
+    user
+      .save()
+      .then(user => res.send(user))
+      .catch(err => console.log(err));
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+//get
+router.get("/you", async (req, res) => {
+  try {
+    const user = await User.find().then(user => res.send(user));
+  } catch (err) {
+    console.error("", err.message);
+  }
+});
+
+//delete
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+  User.findOneAndDelete({ _id: id })
+    .then(user => res.send(user))
+    .catch(err => console.log(err));
+});
+// update
+router.put("/:id", (req, res) => {
+  console.log("TCL: req.params.id", req.params.id);
+  const { nom, prenom, email, password, role } = req.body;
+  User.findOneAndUpdate(
+    { _id: req.params.id },
+    { $set: { nom, prenom, email, password, role } }
+  )
+    .then(user => res.send(user))
+    .catch(err => console.log(err));
 });
 
 module.exports = router;

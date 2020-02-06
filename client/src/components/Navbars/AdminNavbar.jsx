@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Navbar } from "react-bootstrap";
-
+import { connect } from "react-redux";
 import AdminNavbarLinks from "./AdminNavbarLinks.jsx";
-
+import jwt_decode from "jwt-decode";
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -11,6 +11,7 @@ class Header extends Component {
       sidebarExists: false
     };
   }
+
   mobileSidebarToggle(e) {
     if (this.state.sidebarExists === false) {
       this.setState({
@@ -31,6 +32,11 @@ class Header extends Component {
     return (
       <Navbar fluid>
         <Navbar.Header>
+          <p>
+            <i className="fa fa-user" />
+            {jwt_decode(localStorage.getItem("token")).user.nom}({" "}
+            {jwt_decode(localStorage.getItem("token")).user.role})
+          </p>
           <Navbar.Brand>
             <a href="#pablo">{this.props.brandText}</a>
           </Navbar.Brand>
@@ -44,4 +50,7 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+export default connect(mapStateToProps)(Header);

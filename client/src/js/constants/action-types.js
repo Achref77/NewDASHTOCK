@@ -7,7 +7,8 @@ export const AUTH_ERROR = "AUTH_ERROR";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT = "LOGOUT";
-
+export const GETliste = "GET-liste";
+export const UPDATE = "UPDATE";
 export const LOAD_USER = "LOAD_USER";
 export const LOAD_FAIL = "LOAD_FAIL";
 export const LOAD_SUCCESS = "LOAD_SUCCESS";

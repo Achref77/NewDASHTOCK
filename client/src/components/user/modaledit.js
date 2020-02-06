@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 import { connect } from "react-redux";
-import { putListe } from "../../js/actions/actions";
+import { putUser } from "../../js/actions/auth";
 import "./list.css";
 
 const customStyles = {
@@ -30,15 +30,7 @@ class EditModal extends React.Component {
 
   render() {
     const { isOpen, toggle } = this.props;
-    const {
-      _id,
-      nom,
-      prenom,
-      email,
-      password,
-      role,
-      action
-    } = this.props.liste;
+    const { _id, nom, prenom, email, password, role, action } = this.props.user;
     return (
       <div>
         <Modal
@@ -103,7 +95,7 @@ class EditModal extends React.Component {
           <button
             className="btn"
             onClick={() =>
-              this.props.putListe({
+              this.props.putUser({
                 id: _id,
                 nom: this.state.nom,
                 prenom: this.state.prenom,
@@ -122,6 +114,6 @@ class EditModal extends React.Component {
 
 const mapStateToProps = state => ({ ...state });
 const mapDispatchToProps = dispatch => ({
-  putListe: payload => dispatch(putListe(payload))
+  putUser: payload => dispatch(putUser(payload))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(EditModal);

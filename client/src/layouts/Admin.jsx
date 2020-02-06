@@ -1,17 +1,15 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import NotificationSystem from "react-notification-system";
-
+import { connect } from "react-redux";
 import AdminNavbar from "components/Navbars/AdminNavbar";
 import Footer from "components/Footer/Footer";
 import Sidebar from "components/Sidebar/Sidebar";
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.jsx";
-
 import { style } from "variables/Variables.jsx";
-
 import routes from "routes.js";
-
 import image from "assets/img/sidebar-2.jpg";
+import jwt_decode from "jwt-decode";
 
 class Admin extends Component {
   constructor(props) {
@@ -21,13 +19,34 @@ class Admin extends Component {
       image: image,
       color: "black",
       hasImage: true,
-      fixedClasses: "dropdown show-dropdown open"
+      fixedClasses: "dropdown show-dropdown open",
+      role: ""
     };
   }
 
   getRoutes = routes => {
     return routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
+      if (
+        prop.layout === "/admin" &&
+        jwt_decode(localStorage.getItem("token")).user.role[0] === "Admin"
+      ) {
+        return (
+          <Route
+            path={prop.layout + prop.path}
+            render={props => (
+              <prop.component
+                {...props}
+                handleClick={this.handleNotificationClick}
+              />
+            )}
+            key={key}
+          />
+        );
+      } else if (
+        jwt_decode(localStorage.getItem("token")).user.role[0] ===
+          "Magazinier" &&
+        prop.layout === "/admin" && prop.direction === "Magazinier"
+      ) {
         return (
           <Route
             path={prop.layout + prop.path}
@@ -88,6 +107,7 @@ class Admin extends Component {
     }
   }
   render() {
+    console.log("props:", this.props);
     return (
       <div className="wrapper">
         <NotificationSystem ref="notificationSystem" style={style} />
@@ -116,9 +136,13 @@ class Admin extends Component {
             fixedClasses={this.state.fixedClasses}
           />
         </div>
+        {console.log(jwt_decode(localStorage.getItem("token")))}
       </div>
     );
   }
 }
 
-export default Admin;
+const mapStateToProps = state => ({
+  role: state.auth.role
+});
+export default connect(mapStateToProps)(Admin);

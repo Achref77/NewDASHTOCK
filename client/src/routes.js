@@ -11,21 +11,24 @@ const dashboardRoutes = [
     name: "Dashboard",
     icon: "fa fa-pie-chart",
     component: Dashboard,
-    layout: "/admin"
+    layout: "/admin",
+    direction: "admin"
   },
   {
     path: "/table",
     name: "ListUser",
     icon: "fa fa-id-card",
     component: TableList,
-    layout: "/admin"
+    layout: "/admin",
+    direction: "admin"
   },
   {
     path: "/STOCKS",
     name: "STOCK",
     icon: "fa fa-stack-exchange",
     component: Stock,
-    layout: "/admin"
+    layout: "/admin",
+    direction: "Magazinier"
   },
 
   {
@@ -33,21 +36,24 @@ const dashboardRoutes = [
     name: "PRODUITS",
     icon: "fa fa-product-hunt",
     component: PRODUITS,
-    layout: "/admin"
+    layout: "/admin",
+    direction: "Magazinier"
   },
   {
     path: "/CLIENTS",
     name: "CLIENTS",
     icon: "fa fa-group",
     component: CLIENTS,
-    layout: "/admin"
+    layout: "/admin",
+    direction: "Magazinier"
   },
   {
     path: "/FORNUSSEURS",
     name: "FORNUSSEURS",
     icon: "fa fa-truck",
     component: FORNUSSEURS,
-    layout: "/admin"
+    layout: "/admin",
+    direction: "Magazinier"
   }
 ];
 
