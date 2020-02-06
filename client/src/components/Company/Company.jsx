@@ -1,6 +1,6 @@
 import React from "react";
 import Mo from "./modallog.js";
-import "./Company.css";
+// import "./Company.css";
 function Company() {
   return (
     <div>
@@ -15,7 +15,7 @@ https://img.icons8.com/android/24/000000/menu.png
             Menu
           </li>
           <li className="logo">
-            <a href="#">Dashtock</a>
+            <a href="#">Dastock</a>
           </li>
           <li className="search">
             <i class="fa fa-fw fa-search"></i>
@@ -44,7 +44,7 @@ https://img.icons8.com/android/24/000000/menu.png
             alt="sample59"
           />
           <figcaption>
-            <h3>Dashtock</h3>
+            <h3>Dastock</h3>
             <p>Votre Satisfaction c'est notre satisfaction </p>
           </figcaption>
           <a href="#"></a>

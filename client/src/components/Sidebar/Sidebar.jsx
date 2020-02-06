@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { NavLink, Link } from "react-router-dom";
-import Company from "components/Company/Company";
+import { NavLink } from "react-router-dom";
 import AdminNavbarLinks from "../Navbars/AdminNavbarLinks.jsx";
 
 import logo from "assets/img/logoProject.png";
