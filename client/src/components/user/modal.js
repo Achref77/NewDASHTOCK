@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { connect } from "react-redux";
 import { register } from "../../js/actions/auth";
@@ -88,7 +88,6 @@ class ModalExample extends React.Component {
             </div>
           </ModalBody>
           <ModalFooter>
-            {/* <Button color="primary" className="add-btn" onClick={() => this.props.add(this.state.addlist)} >validate</Button>{' '} */}
             <Button
               color="primary"
               className="add-btn"

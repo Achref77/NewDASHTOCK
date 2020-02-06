@@ -12,7 +12,7 @@ const dashboardRoutes = [
     icon: "fa fa-pie-chart",
     component: Dashboard,
     layout: "/admin",
-    direction: "admin"
+    direction: "Magazinier"
   },
   {
     path: "/table",
@@ -45,7 +45,7 @@ const dashboardRoutes = [
     icon: "fa fa-group",
     component: CLIENTS,
     layout: "/admin",
-    direction: "Magazinier"
+    direction: "admin"
   },
   {
     path: "/FORNUSSEURS",
@@ -53,7 +53,7 @@ const dashboardRoutes = [
     icon: "fa fa-truck",
     component: FORNUSSEURS,
     layout: "/admin",
-    direction: "Magazinier"
+    direction: "admin"
   }
 ];
 

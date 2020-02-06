@@ -32,7 +32,7 @@ class App extends Component {
       nom: "",
       prenom: "",
       email: "",
-      password: "",
+      password: "*******",
       role: "",
       id: ""
     });
@@ -56,9 +56,9 @@ class App extends Component {
                       <th> nom </th>
                       <th> Prenom </th>
                       <th> email </th>
-                      <th> password </th>
                       <th> role </th>
                       <th> Action </th>
+                      <th> </th>
                     </tr>
                   </thead>
                 </Table>

@@ -28,7 +28,6 @@ const ListCard = props => {
                     <th> {nom} </th>
                     <th> {prenom} </th>
                     <th> {email} </th>
-                    <th> {password} </th>
                     <th> {role} </th>
                     <th> {action} </th>
                     <th>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Login from "./components/LoginUser/Login";
@@ -23,6 +23,3 @@ const App = () => {
 };
 
 export default App;
-{
-  /* <i className='fas fa-user'> {user && user.nom} */
-}

@@ -33,9 +33,9 @@ router.post("/login", validationRule(), validate, async (req, res) => {
     const payload = {
       user: {
         id: user.id,
-        role: user.role,
+        prenom: user.prenom,
         nom: user.nom,
-        prenom: user.prenom
+        role: user.role
       }
     };
     jwt.sign(

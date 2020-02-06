@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
-  getClients,
-  deleteClient,
-  postClients,
-  putClients
+  getClients
+  // deleteClient
+  // postClients,
+  // putClients
 } from "../js/actions/actions";
 import ClientCard from "../components/clientCard/clientCard";
 import { Grid, Row, Col, Table } from "react-bootstrap";
@@ -73,7 +73,7 @@ class Client extends Component {
         </div>
         {this.props.clients.map(el => (
           <ClientCard
-            deleteClient={this.props.deleteClient}
+            // deleteClient={this.props.deleteClient}
             postClient={this.props.postClient}
             getClient={this.getClient}
             client={el}
@@ -98,6 +98,6 @@ const MapStateToProps = state => ({
   clients: state.Clients.clients
 });
 export default connect(MapStateToProps, {
-  getClients,
-  deleteClient
+  getClients
+  // deleteClient
 })(Client);

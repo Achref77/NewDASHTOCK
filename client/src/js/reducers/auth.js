@@ -7,8 +7,7 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   GETliste,
-  UPDATE,
-  LOAD_SUCCESS
+  UPDATE
 } from "../constants/action-types";
 
 import jwt_decode from "jwt-decode";
