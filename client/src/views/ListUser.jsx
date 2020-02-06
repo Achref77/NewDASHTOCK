@@ -53,11 +53,26 @@ class App extends Component {
                 <Table striped hover>
                   <thead>
                     <tr>
-                      <th> nom </th>
-                      <th> Prenom </th>
-                      <th> email </th>
-                      <th> role </th>
-                      <th> Action </th>
+                      <th>
+                        {" "}
+                        <b>Nom</b>{" "}
+                      </th>
+                      <th>
+                        {" "}
+                        <b>Prenom</b>{" "}
+                      </th>
+                      <th>
+                        {" "}
+                        <b>Email</b>{" "}
+                      </th>
+                      <th>
+                        {" "}
+                        <b>Role</b>{" "}
+                      </th>
+                      <th>
+                        {" "}
+                        <b>Action</b>{" "}
+                      </th>
                       <th> </th>
                     </tr>
                   </thead>
