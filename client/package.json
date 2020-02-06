@@ -8,6 +8,7 @@
     "chartist": "0.10.1",
     "classnames": "^2.2.6",
     "git": "^0.1.5",
+    "jwt-decode": "^2.2.0",
     "mdbreact": "^4.24.0",
     "mobiscroll": "^3.0.0-beta6",
     "moment": "^2.24.0",

@@ -1,18 +1,18 @@
 const initialState = {
-  stocks: []
+  clients: []
 };
 
-const Stocks = (state = initialState, action) => {
+const Clients = (state = initialState, action) => {
   switch (action.type) {
-    case "GET-STOCK":
-      return { ...state, stocks: action.payload };
+    case "GET-CLIENT":
+      return { ...state, clients: action.payload };
   }
 
   switch (action.type) {
-    case "UPDATESTOCK":
+    case "UPDATECLIENT":
       return {
         ...state,
-        stocks: state.stocks.map((el, id) =>
+        clients: state.clients.map((el, id) =>
           id === action.payload.id ? { ...el, title: action.payload.task } : el
         )
       };
@@ -21,4 +21,4 @@ const Stocks = (state = initialState, action) => {
       return state;
   }
 };
-export default Stocks;
+export default Clients;

@@ -26,7 +26,7 @@ export default function Login() {
     dispatch(loadUser(localStorage.getItem("token")));
   }, [isAuth]);
   return isAuth ? (
-    <Redirect to="/admin" />
+    <Redirect to="/admin/dashboard" />
   ) : (
     <div className="Login">
       <form onSubmit={handleSubmit}>

@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import { Provider } from "react-redux";
-import { BrowserRouter, Route, Switch, Redirect, Link } from "react-router-dom";
 import store from "./js/store/index";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/animate.min.css";

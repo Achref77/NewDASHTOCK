@@ -1,16 +1,8 @@
 import React, { Component } from "react";
-
 import ModalExample from "../components/user/modal";
-
 import { connect } from "react-redux";
-import {
-  getListe,
-  deleteListe,
-  postListe,
-  putListe
-} from "../js/actions/actions";
+import { getUser, deleteUser, register, putUser } from "../js/actions/auth";
 import ListCard from "../components/user/ListCard";
-
 import { Grid, Row, Col, Table } from "react-bootstrap";
 
 class App extends Component {
@@ -23,39 +15,34 @@ class App extends Component {
     id: "",
     edit: false
   };
-  getPerson = liste => {
+  getPerson = user => {
     this.setState({
-      nom: liste.nom,
-      prenom: liste.prenom,
-      email: liste.email,
-      password: liste.password,
-      role: liste.role,
-      id: liste._id,
+      nom: user.nom,
+      prenom: user.prenom,
+      email: user.email,
+      password: user.password,
+      role: user.role,
+      id: user._id,
       edit: true
     });
   };
-  handleChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
+
   reset = () => {
     this.setState({
       nom: "",
       prenom: "",
       email: "",
       password: "",
-      role: ""
+      role: "",
+      id: ""
     });
   };
-  addListe = () => {
-    this.props.postListe(this.state);
-    // this.reset();
-  };
 
-  componentDidMount = () => {
-    this.props.getListe();
-  };
+  // this.reset();
+
+  componentDidMount() {
+    this.props.getUser();
+  }
   render() {
     return (
       <div className="user-card">
@@ -79,22 +66,18 @@ class App extends Component {
             </Row>
           </Grid>
         </div>
-        {this.props.liste.map(el => (
+        {this.props.user.map(el => (
           <ListCard
-            deleteListe={this.props.deleteListe}
-            putListe={this.props.putListe}
+            deleteUser={this.props.deleteUser}
+            putUser={this.props.putUser}
             getPerson={this.getPerson}
-            liste={el}
+            user={el}
           />
         ))}
         <Grid fluid>
           <Row>
             <Col md={12}>
-              <ModalExample
-                handleChange={this.handleChange}
-                liste={this.state}
-                action={this.addListe}
-              />
+              <ModalExample user={this.state} />
             </Col>
           </Row>
         </Grid>
@@ -103,11 +86,11 @@ class App extends Component {
   }
 }
 const MapStateToProps = state => ({
-  liste: state.Reducer.liste
+  user: state.auth.user
 });
 export default connect(MapStateToProps, {
-  getListe,
-  deleteListe,
-  postListe,
-  putListe
+  getUser,
+  deleteUser,
+  register,
+  putUser
 })(App);

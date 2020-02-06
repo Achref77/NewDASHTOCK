@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
-
+import { NavLink, Link } from "react-router-dom";
+import Company from "components/Company/Company";
 import AdminNavbarLinks from "../Navbars/AdminNavbarLinks.jsx";
 
 import logo from "assets/img/logoProject.png";
@@ -37,9 +37,9 @@ class Sidebar extends Component {
           <div className="sidebar-background" style={sidebarBackground} />
         ) : null}
         <div className="logo">
-          <a href="https://www.creative-tim.com?ref=lbd-sidebar">
+          <Link to={Company}>
             <img src={logo} style={{ width: "200px", margin: "0px" }} />
-          </a>
+          </Link>
         </div>
 
         <div className="sidebar-wrapper">
