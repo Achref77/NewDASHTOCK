@@ -33,6 +33,28 @@ class Dashboard extends Component {
     return (
       <div className="content">
         <Grid fluid>
+          <figure class="snip1563">
+            <img
+              src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1(Non développé automatiquement, car 14 Mo est trop grand. Vous pouvez quand même le développer ou l'ouvrir dans une nouvelle fenêtre.)&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80"
+              alt="sample110"
+            />
+            <figcaption>
+              <h3>Plus que des logiciels de gestion</h3>
+              <p>Nos logiciels sont innovants et performants.</p>
+            </figcaption>
+            <a href="#"></a>
+          </figure>
+          <figure class="snip1563">
+            <img
+              src="https://images.unsplash.com/photo-1557186817-c11ad50d5b41?ixlib=rb-1.2.1(Non développé automatiquement, car 2 Mo est trop grand. Vous pouvez quand même le développer ou l'ouvrir dans une nouvelle fenêtre.)&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+              alt="sample59"
+            />
+            <figcaption>
+              <h3>Dastock</h3>
+              <p>Votre Satisfaction c'est notre satisfaction </p>
+            </figcaption>
+            <a href="#"></a>
+          </figure>
           <Row>
             <Col lg={3} sm={6}>
               <StatsCard
