@@ -45,7 +45,7 @@ class App extends Component {
   };
   addListe = () => {
     this.props.postListe(this.state);
-    // this.reset();
+    this.reset();
   };
 
   componentDidMount = () => {
@@ -53,18 +53,29 @@ class App extends Component {
   };
   render() {
     return (
-      <div className='user-card'>
-        <div className='user'>
+      <div className="user-card">
+        <div className="user">
           <Grid fluid>
             <Row>
               <Col md={12}>
                 <Table striped hover>
                   <thead>
                     <tr>
-                      <th> StockInitial </th>
-                      <th> StockMinimum </th>
-                      <th> StockSecurite </th>
-                      <th> Action </th>
+                      <th>
+                        <b>StockInitial </b>{" "}
+                      </th>
+                      <th>
+                        {" "}
+                        <b>StockMinimum</b>{" "}
+                      </th>
+                      <th>
+                        {" "}
+                        <b>StockSecurite</b>{" "}
+                      </th>
+                      <th>
+                        {" "}
+                        <b>Action</b>{" "}
+                      </th>
                     </tr>
                   </thead>
                 </Table>
