@@ -1,28 +1,33 @@
 import React, { Component } from "react";
+
+import ModalExample from "../components/user/modaleStock";
+
 import { connect } from "react-redux";
 import {
-  getStocks,
-  deleteStock,
-  postStocks,
-  putStocks
+  getListe,
+  deleteListe,
+  postListe,
+  putListe
 } from "../js/actions/actions";
-import StockCard from "../components/stockCard/stockCard";
+import ListCardStock from "../components/user/ListCardStock";
+
 import { Grid, Row, Col, Table } from "react-bootstrap";
 
-class Stock extends Component {
+class App extends Component {
   state = {
-    stockInitial: "",
-    stockMinimum: "",
-    stockSecurite: "",
+    StockInitial: "",
+    StockMinimum: "",
+    StockSecurite: "",
     id: "",
     edit: false
   };
-  getStock = stock => {
+  getPerson = liste => {
     this.setState({
-      stockInitial: stock.stockInitial,
-      stockMinimum: stock.stockMinimum,
-      stockSecurite: stock.stockSecurite,
-      id: stock._id,
+      StockInitial: liste.StockInitial,
+      StockMinimum: liste.StockMinimum,
+      StockSecurite: liste.StockSecurite,
+
+      id: liste._id,
       edit: true
     });
   };
@@ -33,32 +38,32 @@ class Stock extends Component {
   };
   reset = () => {
     this.setState({
-      stockInitial: "",
-      stockMinimum: "",
-      stockSecurite: ""
+      StockInitial: "",
+      StockMinimum: "",
+      StockSecurite: ""
     });
   };
-  addStock = () => {
-    this.props.postStock(this.state);
+  addListe = () => {
+    this.props.postListe(this.state);
     // this.reset();
   };
 
   componentDidMount = () => {
-    this.props.getStocks();
+    this.props.getListe();
   };
   render() {
     return (
-      <div className="contact-card">
-        <div className="content">
+      <div className='user-card'>
+        <div className='user'>
           <Grid fluid>
             <Row>
               <Col md={12}>
                 <Table striped hover>
                   <thead>
                     <tr>
-                      <th> Stock Initial </th>
-                      <th> Stock Minimum </th>
-                      <th> Stock Securite </th>
+                      <th> StockInitial </th>
+                      <th> StockMinimum </th>
+                      <th> StockSecurite </th>
                       <th> Action </th>
                     </tr>
                   </thead>
@@ -67,23 +72,23 @@ class Stock extends Component {
             </Row>
           </Grid>
         </div>
-        {this.props.stocks.map(el => (
-          <StockCard
-            deleteStock={this.props.deleteStock}
-            postStock={this.props.postStock}
-            getStock={this.getStock}
-            stock={el}
+        {this.props.liste.map(el => (
+          <ListCardStock
+            deleteListe={this.props.deleteListe}
+            putListe={this.props.putListe}
+            getPerson={this.getPerson}
+            liste={el}
           />
         ))}
         <Grid fluid>
           <Row>
-            {/* <Col md={12}>
+            <Col md={12}>
               <ModalExample
                 handleChange={this.handleChange}
-                stock={this.state}
-                action={this.addStock}
+                liste={this.state}
+                action={this.addListe}
               />
-            </Col> */}
+            </Col>
           </Row>
         </Grid>
       </div>
@@ -91,9 +96,11 @@ class Stock extends Component {
   }
 }
 const MapStateToProps = state => ({
-  stocks: state.Stocks.stocks
+  liste: state.Reducer.liste
 });
 export default connect(MapStateToProps, {
-  getStocks,
-  deleteStock
-})(Stock);
+  getListe,
+  deleteListe,
+  postListe,
+  putListe
+})(App);
