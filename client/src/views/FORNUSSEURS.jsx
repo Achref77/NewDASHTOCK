@@ -1,28 +1,33 @@
 import React, { Component } from "react";
+
+import ModalExample from "../components/user/modaleStock";
+
 import { connect } from "react-redux";
 import {
-  getFournisseurs,
-  deleteFournisseur,
-  postFournisseurs,
-  putFournisseurs
+  getListe,
+  deleteListe,
+  postListe,
+  putListe
 } from "../js/actions/actions";
-import FournisseurCard from "../components/fournisseurCard/fournisseurCard";
+import ListCardStock from "../components/user/ListCardStock";
+
 import { Grid, Row, Col, Table } from "react-bootstrap";
 
-class Fournisseur extends Component {
+class App extends Component {
   state = {
-    nomFournisseur: "",
-    emailFournisseur: "",
-    telephoneFournisseur: "",
+    StockInitial: "",
+    StockMinimum: "",
+    StockSecurite: "",
     id: "",
     edit: false
   };
-  getFournisseur = fournisseur => {
+  getPerson = liste => {
     this.setState({
-      nomFournisseur: fournisseur.nomFournisseur,
-      emailFournisseur: fournisseur.emailFournisseur,
-      telephoneFournisseur: fournisseur.telephoneFournisseur,
-      id: fournisseur._id,
+      StockInitial: liste.StockInitial,
+      StockMinimum: liste.StockMinimum,
+      StockSecurite: liste.StockSecurite,
+
+      id: liste._id,
       edit: true
     });
   };
@@ -33,23 +38,23 @@ class Fournisseur extends Component {
   };
   reset = () => {
     this.setState({
-      nomFournisseur: "",
-      emailFournisseur: "",
-      telephoneFournisseur: ""
+      StockInitial: "",
+      StockMinimum: "",
+      StockSecurite: ""
     });
   };
-  addFournisseur = () => {
-    this.props.postFournisseur(this.state);
+  addListe = () => {
+    this.props.postListe(this.state);
     // this.reset();
   };
 
   componentDidMount = () => {
-    this.props.getFournisseurs();
+    this.props.getListe();
   };
   render() {
     return (
-      <div className="contact-card">
-        <div className="content">
+      <div className='user-card'>
+        <div className='user'>
           <Grid fluid>
             <Row>
               <Col md={12}>
@@ -67,23 +72,23 @@ class Fournisseur extends Component {
             </Row>
           </Grid>
         </div>
-        {this.props.fournisseurs.map(el => (
-          <FournisseurCard
-            deleteFournisseur={this.props.deleteFournisseur}
-            postFournisseur={this.props.postFournisseur}
-            getFournisseur={this.getFournisseur}
-            fournisseur={el}
+        {this.props.liste.map(el => (
+          <ListCardStock
+            deleteListe={this.props.deleteListe}
+            putListe={this.props.putListe}
+            getPerson={this.getPerson}
+            liste={el}
           />
         ))}
         <Grid fluid>
           <Row>
-            {/* <Col md={12}>
+            <Col md={12}>
               <ModalExample
                 handleChange={this.handleChange}
-                stock={this.state}
-                action={this.addStock}
+                liste={this.state}
+                action={this.addListe}
               />
-            </Col> */}
+            </Col>
           </Row>
         </Grid>
       </div>
@@ -91,9 +96,11 @@ class Fournisseur extends Component {
   }
 }
 const MapStateToProps = state => ({
-  fournisseurs: state.Fournisseurs.fournisseurs
+  liste: state.Reducer.liste
 });
 export default connect(MapStateToProps, {
-  getFournisseurs,
-  deleteFournisseur
-})(Fournisseur);
+  getListe,
+  deleteListe,
+  postListe,
+  putListe
+})(App);

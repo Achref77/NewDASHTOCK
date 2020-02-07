@@ -1,30 +1,33 @@
 import React, { Component } from "react";
+
+import ModalExample from "../components/user/modaleStock";
+
 import { connect } from "react-redux";
 import {
-  getClients
-  // deleteClient
-  // postClients,
-  // putClients
+  getListe,
+  deleteListe,
+  postListe,
+  putListe
 } from "../js/actions/actions";
-import ClientCard from "../components/clientCard/clientCard";
+import ListCardStock from "../components/user/ListCardStock";
+
 import { Grid, Row, Col, Table } from "react-bootstrap";
 
-class Client extends Component {
+class App extends Component {
   state = {
-    nomClient: "",
-    prenomClient: "",
-    emailClient: "",
-    telephoneClient: "",
+    StockInitial: "",
+    StockMinimum: "",
+    StockSecurite: "",
     id: "",
     edit: false
   };
-  getClient = client => {
+  getPerson = liste => {
     this.setState({
-      nomClient: client.nomClient,
-      prenomClient: client.prenomClient,
-      emailClient: client.emailClient,
-      telephoneClient: client.telephoneClient,
-      id: client._id,
+      StockInitial: liste.StockInitial,
+      StockMinimum: liste.StockMinimum,
+      StockSecurite: liste.StockSecurite,
+
+      id: liste._id,
       edit: true
     });
   };
@@ -35,24 +38,23 @@ class Client extends Component {
   };
   reset = () => {
     this.setState({
-      nomClient: "",
-      PrenomClient: "",
-      telephoneClient: "",
-      emailClient: ""
+      StockInitial: "",
+      StockMinimum: "",
+      StockSecurite: ""
     });
   };
-  addClient = () => {
-    this.props.postClient(this.state);
+  addListe = () => {
+    this.props.postListe(this.state);
     // this.reset();
   };
 
   componentDidMount = () => {
-    this.props.getClients();
+    this.props.getListe();
   };
   render() {
     return (
-      <div className="contact-card">
-        <div className="content">
+      <div className='user-card'>
+        <div className='user'>
           <Grid fluid>
             <Row>
               <Col md={12}>
@@ -60,9 +62,8 @@ class Client extends Component {
                   <thead>
                     <tr>
                       <th> nomClient </th>
-                      <th> PrenomClient </th>
+                      <th> adresseClient </th>
                       <th> telephoneClient </th>
-                      <th> emailClient </th>
                       <th> Action </th>
                     </tr>
                   </thead>
@@ -71,23 +72,23 @@ class Client extends Component {
             </Row>
           </Grid>
         </div>
-        {this.props.clients.map(el => (
-          <ClientCard
-            // deleteClient={this.props.deleteClient}
-            postClient={this.props.postClient}
-            getClient={this.getClient}
-            client={el}
+        {this.props.liste.map(el => (
+          <ListCardStock
+            deleteListe={this.props.deleteListe}
+            putListe={this.props.putListe}
+            getPerson={this.getPerson}
+            liste={el}
           />
         ))}
         <Grid fluid>
           <Row>
-            {/* <Col md={12}>
+            <Col md={12}>
               <ModalExample
                 handleChange={this.handleChange}
-                stock={this.state}
-                action={this.addStock}
+                liste={this.state}
+                action={this.addListe}
               />
-            </Col> */}
+            </Col>
           </Row>
         </Grid>
       </div>
@@ -95,9 +96,11 @@ class Client extends Component {
   }
 }
 const MapStateToProps = state => ({
-  clients: state.Clients.clients
+  liste: state.Reducer.liste
 });
 export default connect(MapStateToProps, {
-  getClients
-  // deleteClient
-})(Client);
+  getListe,
+  deleteListe,
+  postListe,
+  putListe
+})(App);

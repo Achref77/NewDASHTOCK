@@ -1,68 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Grid, Row, Col, Table } from "react-bootstrap";
-import "../LoginUser/Login";
-import EditModal from "../user/modaledit";
-import { deleteStock } from "../../js/actions/actions";
+import React, { Component } from "react";
 
-const StockCard = props => {
-  console.log("TCL: props", props);
-  const {
-    _id,
-    stockInitial,
-    stockMinimum,
-    stockSecurite,
-    action
-  } = props.stock;
-  const [show, setShow] = useState(false);
-  const dispatch = useDispatch();
-  const delet = () => {
-    dispatch(deleteStock(_id));
-  };
-  return (
-    <div className="contact-card">
-      <div className="content">
-        <Grid fluid>
-          <Row>
-            <Col md={12}>
-              <Table striped hover>
-                <thead>
-                  <tr>
-                    <th> {stockInitial} </th>
-                    <th> {stockMinimum} </th>
-                    <th> {stockSecurite} </th>
-                    <th> {action} </th>
-                    <th>
-                      <i
-                        class="fa fa-pencil-square-o"
-                        aria-hidden="true"
-                        onClick={() => setShow(true)}
-                      ></i>
-                      {/* <button onClick={() => setShow(true)}>edit</button> */}
-                      <EditModal
-                        isOpen={show}
-                        toggle={setShow}
-                        stock={props.stock}
-                      />
-
-                      {/* <img src={edit} /> */}
-
-                      <i
-                        className="fa fa-trash-o x"
-                        aria-hidden="true"
-                        style={{ minWidth: "223px", maxWidth: "180px" }}
-                        onClick={() => dispatch(delet(_id))}
-                      ></i>
-                    </th>
-                  </tr>
-                </thead>
-              </Table>
-            </Col>
-          </Row>
-        </Grid>
+export class listeCard extends Component {
+  render() {
+    return (
+      <div className='card card-user'>
+        <div className='image'>
+          <img src={this.props.bgImage} alt='...' />
+        </div>
+        <div className='content'>
+          <div className='author'>
+            <a href='#pablo'>
+              <img
+                className='avatar border-gray'
+                src={this.props.avatar}
+                alt='...'
+              />
+              <h4 className='title'>
+                {this.props.name}
+                <br />
+                <small>{this.props.listeName}</small>
+              </h4>
+            </a>
+          </div>
+          <p className='description text-center'>{this.props.description}</p>
+        </div>
+        <hr />
+        <div className='text-center'>{this.props.socials}</div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
-export default StockCard;
+export default listeCard;
