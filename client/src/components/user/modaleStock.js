@@ -37,6 +37,19 @@ class ModalExample extends React.Component {
           <ModalBody>
             <div className='add-card'>
               <p className='card-title-add'>Ajouter liste</p>
+              <p>CodeAbarre</p>
+              <input
+                name='CodeAbarre'
+                type='text'
+                placeholder='CodeAbarre...'
+                onChange={this.props.handleChange}
+                value={this.props.liste.CodeAbarre}
+              />
+             
+             
+             
+             
+             
               <p>StockInitial</p>
               <input
                 name='StockInitial'

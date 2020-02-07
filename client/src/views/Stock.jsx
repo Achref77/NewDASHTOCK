@@ -15,6 +15,7 @@ import { Grid, Row, Col, Table } from "react-bootstrap";
 
 class App extends Component {
   state = {
+    CodeAbare:"",
     StockInitial: "",
     StockMinimum: "",
     StockSecurite: "",
@@ -23,6 +24,7 @@ class App extends Component {
   };
   getPerson = liste => {
     this.setState({
+      CodeAbare:liste.CodeAbare,
       StockInitial: liste.StockInitial,
       StockMinimum: liste.StockMinimum,
       StockSecurite: liste.StockSecurite,
@@ -38,9 +40,11 @@ class App extends Component {
   };
   reset = () => {
     this.setState({
+      CodeAbare:"",
       StockInitial: "",
       StockMinimum: "",
-      StockSecurite: ""
+      StockSecurite: "",
+      id: ""
     });
   };
   addListe = () => {
@@ -61,6 +65,7 @@ class App extends Component {
                 <Table striped hover>
                   <thead>
                     <tr>
+
                       <th>
                         <b>StockInitial </b>{" "}
                       </th>
