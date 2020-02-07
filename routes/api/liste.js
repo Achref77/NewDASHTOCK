@@ -21,19 +21,20 @@ router.delete("/:id", (req, res) => {
 // update
 router.put("/:id", (req, res) => {
   console.log("TCL: req.params.id", req.params.id);
-  const { StockInitial, StockMinimum, StockSecurite, action } = req.body;
+  const { CodeAbare,StockInitial, StockMinimum, StockSecurite, action } = req.body;
   liste
     .findOneAndUpdate(
       { _id: req.params.id },
-      { $set: { StockInitial, StockMinimum, StockSecurite, action } }
+      { $set: {CodeAbare, StockInitial, StockMinimum, StockSecurite, action } }
     )
     .then(liste => res.send(liste))
     .catch(err => console.log(err));
 });
 // add
 router.post("/", (req, res) => {
-  const { StockInitial, StockMinimum, StockSecurite, action } = req.body;
+  const { CodeAbare,StockInitial, StockMinimum, StockSecurite, action } = req.body;
   const newliste = new liste({
+    CodeAbare,
     StockInitial,
     StockMinimum,
     StockSecurite,

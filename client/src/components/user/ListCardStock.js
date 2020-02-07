@@ -8,6 +8,7 @@ const ListCardStock = props => {
   console.log("TCL: props", props);
   const {
     _id,
+    CodeAbare,
     StockInitial,
     StockMinimum,
     StockSecurite,
@@ -31,6 +32,7 @@ const ListCardStock = props => {
               <Table striped hover>
                 <thead>
                   <tr>
+                  <th> {CodeAbare} </th>
                     <th> {StockInitial} </th>
                     <th> {StockMinimum} </th>
                     <th> {StockSecurite} </th>

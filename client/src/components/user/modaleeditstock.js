@@ -20,6 +20,7 @@ class EditModal extends React.Component {
     super(props);
     this.state = {
       modalIsOpen: false,
+      CodeAbare: "",
       StockInitial: "",
       StockMinimum: "",
       StockSecurite: ""
@@ -30,11 +31,10 @@ class EditModal extends React.Component {
     const { isOpen, toggle } = this.props;
     const {
       _id,
+      CodeAbare,
       StockInitial,
       StockMinimum,
-      StockSecurite,
-      
-
+      StockSecurite
     } = this.props.liste;
     return (
       <div>
@@ -44,6 +44,15 @@ class EditModal extends React.Component {
           style={customStyles}
           contentLabel='Example Modal'
         >
+        <input
+            defaultValue={CodeAbare}
+            type='text'
+            class='form-control'
+            placeholder='CodeAbare....'
+            id='CodeAbare'
+            name=''
+            onChange={e => this.setState({ CodeAbare: e.target.value })}
+          />
           <input
             defaultValue={StockInitial}
             type='text'
@@ -71,7 +80,6 @@ class EditModal extends React.Component {
             name=''
             onChange={e => this.setState({ StockSecurite: e.target.value })}
           />
-         
 
           <button
             className='btn btn-outline-dark'
@@ -84,10 +92,10 @@ class EditModal extends React.Component {
             onClick={() =>
               this.props.putListe({
                 id: _id,
+                CodeAbare :this.state.CodeAbare,
                 StockInitial: this.state.StockInitial,
                 StockMinimum: this.state.StockMinimum,
-                StockSecurite: this.state.StockSecurite,
-               
+                StockSecurite: this.state.StockSecurite
               })
             }
           >
